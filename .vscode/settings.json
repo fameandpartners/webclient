@@ -1,0 +1,13 @@
+{
+    "eslint.enable": false,
+    "javascript.validate.enable": true,
+    "tslint.autoFixOnSave": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "/var/folders/**": true
+    }
+}

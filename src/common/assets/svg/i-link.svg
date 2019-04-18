@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Link</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PDP---Share-Modal-(Desktop)" transform="translate(-563.000000, -506.000000)" fill="currentColor">
+            <g id="Modal" transform="translate(497.000000, 264.000000)">
+                <g id="Group-9" transform="translate(48.000000, 224.000000)">
+                    <g id="Link" transform="translate(16.000000, 16.000000)" fill="currentColor">
+                        <g id="Group" transform="translate(2.000000, 2.000000)">
+                            <path d="M9.142425,7.8318 L8.081925,6.7713 L9.886425,4.96755 C10.677675,4.17555 10.677675,2.8863 9.886425,2.09505 C9.118425,1.32705 7.781925,1.32705 7.013925,2.09505 L5.209425,3.89955 L4.148925,2.83905 L5.953425,1.03455 C6.620175,0.36705 7.506675,0.0003 8.450175,0.0003 C9.392925,0.0003 10.280175,0.36705 10.946925,1.03455 C12.323925,2.4108 12.323925,4.65105 10.946925,6.02805 L9.142425,7.8318 Z" id="Fill-2"></path>
+                            <path d="M3.5292,11.98245 C2.58645,11.98245 1.6992,11.6157 1.03245,10.9482 C-0.34455,9.5712 -0.34455,7.3317 1.03245,5.9547 L2.83695,4.15095 L3.89745,5.21145 L2.09295,7.0152 C1.3017,7.8072 1.3017,9.0957 2.09295,9.8877 C2.86095,10.65495 4.1982,10.65495 4.96545,9.8877 L6.76995,8.08395 L7.83045,9.14445 L6.02595,10.9482 C5.3592,11.6157 4.47195,11.98245 3.5292,11.98245" id="Fill-4"></path>
+                            <polygon id="Fill-1" points="4.4982 8.5437 3.4377 7.4832 7.4817 3.43845 8.5422 4.49895"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

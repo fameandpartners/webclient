@@ -1,0 +1,114 @@
+@import "vars";
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.h1,
+h1 {
+  @include text-style-h1;
+  margin: 0 0 3*$space-base;
+}
+
+.h2,
+h2 {
+  @include text-style-h2;
+  margin: 0 0 2*$space-base;
+}
+
+.h3,
+h3 {
+  @include text-style-h3;
+  margin: 0 0 2*$space-base;
+}
+
+.h4,
+h4 {
+  @include text-style-h4;
+  margin: 0 0 2*$space-base;
+}
+
+.h5,
+h5 {
+  @include text-style-h5;
+  margin: 0 0 2*$space-base;
+}
+
+body {
+  @include text-style-body;
+  color: $color-copy;
+  background-color: $color-white;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-secondary {
+  color: $color-copy-secondary;
+}
+
+a {
+  color: $color-link;
+  text-decoration: underline;
+  @include text-style-inherit;
+  cursor: pointer;
+
+  &.no-underline {
+    text-decoration: none;
+  }
+  
+  &:hover,
+  &:focus {
+    color: $color-black;
+    text-decoration: underline;
+  }
+
+  &.icon-text {
+    color: $color-grey20;
+    line-height: 16px;
+
+    display: inline-flex;
+
+    svg {
+      margin-right: $space-base;
+    }
+  }
+}
+
+svg, img, video {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0 2*$space-base;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+input:invalid {
+  box-shadow:none;
+}
+
+hr {
+  height: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid $color-grey90;
+}

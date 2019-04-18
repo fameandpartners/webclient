@@ -1,0 +1,11 @@
+$space-base: 8px;
+$default-multiplier: 1 !default;
+@function space($multiplier: $default-multiplier) {
+    @return $space-base * $multiplier;
+}
+
+$navbar-height: 56px;
+$search-filter-bar-height: 40px;
+$footer-height: 232px;
+$modal-footer-height: 80px;
+$button-height: 6*$space-base;

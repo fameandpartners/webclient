@@ -1,0 +1,89 @@
+$grid-width: 2400px !default;
+$gutter: 2.5vw;
+$gutter-vertically: 2.5vw;
+$columns: 12 !default;
+
+$page-padding: 54px;
+$page-padding-mobile: 16px;
+
+@mixin container {
+  max-width: $grid-width;
+  margin: 0 auto;
+  
+  @include container-normal-width;
+}
+
+@function span($c, $columns: $columns){
+  @return calc(100% / #{$columns} * #{$c} - 0.1px);
+}
+
+@mixin grid {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+  padding: 0 calc(#{$page-padding} - #{$gutter/2});
+}
+
+
+@mixin container-normal-width {
+  width:100%;
+  padding: 0 $page-padding;
+
+  @include mobile {
+    padding: 0 $page-padding-mobile;
+  }
+}
+
+@mixin container-full-width {
+  width: 100%;
+  padding: 0;
+}
+
+@mixin container-narrow-width {
+  width: 80%;
+  @include mobile {
+    width:100%;
+  }
+}
+
+@mixin grid-column($number) {
+  width: span($number);
+  padding: 0 $gutter/2;
+}
+
+@mixin grid-column-narrow-padding($number) {
+  width: span($number);
+  padding: 0 $space-base;
+}
+
+@mixin grid-column-fixed($number, $columns: $columns, $width: $grid-width) {
+  width: calc((100vw - 2 * #{$page-padding} + #{$gutter} ) / #{$columns} * #{$number} - 0.1px - #{$gutter});
+  max-width: calc((#{$width} - 2 * #{$page-padding} + #{$gutter}) / #{$columns} * #{$number} - 0.1px - #{$gutter});
+}
+
+@mixin grid-column-mw($number) {
+  min-width: span($number);
+  max-width: span($number);
+  padding: 0 $gutter/2;
+}
+
+@mixin grid-offset-margin-left($number) {
+  margin-left: span($number);
+}
+
+@mixin grid-offset-margin-right($number) {
+  margin-right: span($number);
+}
+
+@mixin grid-offset-padding-left($number) {
+  padding-left: span($number);
+}
+
+@mixin grid-offset-padding-right($number) {
+  padding-right: span($number);
+}
+
+@mixin grid-offset-padding-top($number) {
+  padding-top: span($number);
+}

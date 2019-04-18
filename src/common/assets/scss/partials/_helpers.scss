@@ -1,0 +1,61 @@
+@mixin clearfix() {
+    &::after { /* to clear float */
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin cms-page-padding-when-full-width-section {
+    :global(.BaseSection--width-full) :global(.BaseSectionGrid) > :global(*:first-child) & {
+        margin-left: $page-padding;
+        margin-right: $page-padding;
+    }
+
+    :global(.BaseSection--width-full) :global(.HeaderSimple) & {
+        margin-left: $page-padding;
+        margin-right: $page-padding;
+    }
+
+    @include media("<tablet") {
+        :global(.BaseSection--mobile-width-normal) :global(.BaseSectionGrid) > :global(*:first-child) & {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        :global(.BaseSection--mobile-width-normal) :global(.HeaderSimple) & {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+
+        :global(.BaseSection--mobile-width-full) :global(.BaseSectionGrid) > :global(*:first-child) & {
+            margin-left: $page-padding;
+            margin-right: $page-padding;
+        }
+
+        :global(.BaseSection--mobile-width-full) :global(.HeaderSimple)  {
+            margin-left: $page-padding;
+            margin-right: $page-padding;
+        }
+
+        :global(.BaseSection--width-full) :global(.BaseSectionGrid--MobileGrid-One) & {
+            margin-left: $page-padding;
+            margin-right: $page-padding;
+        }
+
+        :global(.BaseSection--mobile-width-normal) :global(.BaseSectionGrid--MobileGrid-One) & {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        :global(.BaseSection--mobile-width-full) :global(.BaseSectionGrid--MobileGrid-One) & {
+            margin-left: $page-padding;
+            margin-right: $page-padding;
+        }
+    }
+
+}
+
+@mixin border-transition($time: 300ms default) {
+    transition: border $time ease-in-out;
+}

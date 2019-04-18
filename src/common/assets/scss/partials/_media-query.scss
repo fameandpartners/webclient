@@ -1,0 +1,68 @@
+$phone: 320;
+$phoneLarge: 425;
+$tablet: 568;
+$tabletLarge: 768;
+$desktopSmall: 1024;
+$desktopMedium: 1440;
+$desktopLarge: 1920;
+$desktopExtraLarge: 2560;
+$desktopUltraWide: 3440;
+
+$iphoneX: 'retina3x', 'device-height<=812px', 'device-width>=375px';
+
+$breakpoints: (
+    phone: $phone + 0px,
+    phoneLarge: $phoneLarge + 0px,
+    tablet: $tablet + 0px,
+    tabletLarge: $tabletLarge + 0px,
+    desktopSmall: $desktopSmall + 0px,
+    desktopMedium: $desktopMedium + 0px,
+    desktopLarge: $desktopLarge + 0px,
+    desktopExtraLarge: $desktopExtraLarge + 0px,
+    desktopUltraWide: $desktopUltraWide + 0px,
+);
+
+@mixin mobile {
+    @include media('<=desktopSmall') {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @include media('>desktopSmall') {
+        @content;
+    }
+}
+
+@mixin desktopLarge {
+    @include media('>desktopLarge') {
+        @content;
+    }
+}
+
+
+@mixin desktopExtraLarge {
+    @include media('>desktopExtraLarge') {
+        @content;
+    }
+}
+
+@mixin desktopUltraWide {
+    @include media('>desktopUltraWide') {
+        @content;
+    }
+}
+
+:export {
+    PHONE: $phone;
+    PHONE_LARGE: $phoneLarge;
+    TABLET: $tablet;
+    TABLET_LARGE: $tabletLarge;
+    DESKTOP_SMALL: $desktopSmall;
+    DESKTOP_MEDIUM: $desktopMedium;
+    DESKTOP_LARGE: $desktopLarge;
+    DESKTOP_EXTRA_LARGE: $desktopExtraLarge;
+    DESKTOP_ULTRA_WIDE: $desktopUltraWide;
+}
+        
+@import "node_modules/include-media/dist/_include-media.scss"

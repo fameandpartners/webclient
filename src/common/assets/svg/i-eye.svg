@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="48px" viewBox="0 0 88 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="currentColor" fill-rule="evenodd">
+        <g id="noun_Eye_675146" transform="translate(-6.000000, 0.000000)" fill="currentColor" fill-rule="nonzero">
+            <g id="Group" transform="translate(6.000000, 0.000000)">
+                <circle id="Oval" cx="44" cy="24" r="4"></circle>
+                <path d="M44,40 C35.178,40 28,32.822 28,24 C28,15.178 35.178,8 44,8 C52.822,8 60,15.178 60,24 C60,32.822 52.822,40 44,40 Z M44,12 C37.383,12 32,17.383 32,24 C32,30.617 37.383,36 44,36 C50.617,36 56,30.617 56,24 C56,17.383 50.617,12 44,12 Z" id="Shape"></path>
+                <path d="M44,48 C29.206,48 16.628,41.456 0.585,25.414 C0.211,25.039 0,24.53 0,24 C0,23.47 0.211,22.961 0.586,22.586 C16.628,6.543 29.206,0 44,0 C58.794,0 71.373,6.543 87.415,22.586 C88.196,23.367 88.196,24.633 87.415,25.414 C71.372,41.456 58.794,48 44,48 Z M4.844,24 C19.537,38.364 30.635,44 44,44 C57.365,44 68.463,38.364 83.156,24 C68.464,9.636 57.366,4 44,4 C30.634,4 19.536,9.636 4.844,24 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

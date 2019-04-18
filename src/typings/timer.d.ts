@@ -1,0 +1,1 @@
+export type Timer = NodeJS.Timer | WindowTimers | number;

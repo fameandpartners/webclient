@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "downlevelIteration": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "preserve",
+        "lib": ["es6", "es2015", "es2017", "dom"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "strict": true,
+        "pretty": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es2016",
+        "baseUrl": "src",
+        "paths": {
+            "@containers/*": ["common/containers/*"],
+            "@components/*": ["common/components/*"],
+            "@common/*": ["common/*"],
+            "@constants": ["common/constants"],
+            "@services/*": ["common/services/*"],
+            "@scss/*": ["common/assets/scss/*"],
+            "@svg/*": ["common/assets/svg/*"],
+            "@transforms/*": ["common/transforms/*"],
+            "@translations/*": ["common/translations/*"],
+            "@typings": ["typings/index.d.ts"],
+            "@utils/*": ["utils/*"]
+        }
+    },
+    "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "webpack.client.config.js", "webpack.server.config.js"],
+    "typeRoots": ["./src/typings", "./node_modules"],
+    "types": ["typePatches", "node", "webpack-env"]
+}

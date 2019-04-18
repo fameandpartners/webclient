@@ -1,0 +1,71 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+
+      - run: yarn install
+      - run: npm rebuild node-sass
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+        
+      - run: yarn test
+
+      - run: yarn lint
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 17.09.0-ce
+
+      - run: |
+          VERSION=${CIRCLE_BRANCH/\//-}.$CIRCLE_BUILD_NUM
+
+          sudo apt-get update -qq
+          sudo apt-get install -qq python python-pip libpython-dev
+          sudo pip install awscli
+          
+          ./.circleci/build-docker.sh $VERSION
+          
+          if [[ $CIRCLE_BRANCH =~ ^release1 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-QA1" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^release2 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-QA2" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^release3 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-QA3" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^develop$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-QA4" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^staging$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-Staging" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^master$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "Webclient-prod" --version-label $VERSION
+          fi
+      - run:
+          name: Send Success Slack Notification
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              COMMITMESSAGE=`git log --format="%s" -n 1 $CIRCLE_SHA1`
+              COMMITUSER=`git log -1 --pretty=format:'%an'`
+              COMMITURL="https://github.com/fameandpartners/webclient/commit/${CIRCLE_SHA1}"
+              curl -X POST -H 'Content-type: application/json' --data "{'text':'*Webclient (${CIRCLE_BRANCH}) : ${COMMITUSER}* \n ${COMMITMESSAGE}', 'mrkdwn': true, 'unfurl_links': false, 'attachments': [ { 'fallback': 'View commit at ${COMMITURL}', 'actions': [ { 'type': 'button', 'text': 'View', 'url': '${COMMITURL}' } ] } ] }" https://hooks.slack.com/services/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
+            fi
+          when: on_success
+      - run:
+          name: Send Success Slack Notification
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl -X POST -H 'Content-type: application/json' --data '{"text":"${CIRCLE_BRANCH} webclient build error"}' https://hooks.slack.com/services/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
+            fi
+          when: on_fail

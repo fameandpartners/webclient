@@ -1,0 +1,161 @@
+$typography-graphik-light: "Graphik-Light", sans-serif;
+$typography-brandon-grotesque: "brandon-grotesque", brandon-grotesque, sans-serif;
+
+strong,
+b {
+    font-weight: 500;
+}
+
+@mixin text-style-body {
+    font-family: $typography-brandon-grotesque;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    font-weight: normal;
+    color: $color-black;
+}
+
+@mixin text-style-h1 {
+    font-family: $typography-graphik-light;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    color: $color-black;
+
+    @include mobile {
+        font-size: 30px;
+        line-height: 5*$space-base;
+    }
+}
+
+@mixin text-style-content-h1  {
+    @include text-style-h1;
+    font-size: 48px;
+    line-height: 64px;
+}
+
+@mixin text-style-h2 {
+    font-family: $typography-graphik-light;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    color: $color-black;
+
+    @include mobile {
+        font-size:28px;
+        line-height: 4*$space-base;
+    }
+}
+
+@mixin text-style-h3 {
+    font-family: $typography-graphik-light;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 40px;
+    color: $color-black;
+
+    @include mobile {
+        font-size:22px;
+    }
+}
+
+@mixin text-style-h4 {
+    font-family: $typography-brandon-grotesque;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 300;
+    color: $color-black;
+
+    @include mobile {
+        font-size:18px;
+    }
+}
+
+@mixin text-style-h5 {
+    @include text-style-body;
+    font-weight: normal;
+    font-weight: 16px;
+}
+
+@mixin text-style-subtitle {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: $color-black;
+    font-weight: normal;
+}
+
+@mixin text-style-navigation-item {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: $color-black;
+    font-weight: normal;
+}
+
+@mixin text-style-form-label {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0.6px;
+    color: $color-grey20;
+    font-weight: normal;
+}
+
+@mixin text-style-form-option {
+    font-family: $typography-brandon-grotesque;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0.6px;
+    color: $color-grey20;
+    font-weight: 300;
+}
+
+@mixin text-style-form-placeholder {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: $color-grey47;
+    font-weight: normal;
+}
+
+@mixin text-style-card-subtitle {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: $color-grey47;
+    font-weight: normal;
+}
+
+@mixin text-style-title {
+    font-family: $typography-brandon-grotesque;
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    color: $color-black;
+    font-weight: normal;
+}
+
+@mixin text-style-inherit {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+@mixin strikethrough {
+    &:after {
+        height: 1px;
+        background-color: $color-red;
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 50%;
+        left: 0;
+    }
+}
