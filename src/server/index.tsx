@@ -23,7 +23,7 @@ import { createFameConfig } from './config';
 import compression from 'compression';
 import expressStaticGzip from 'express-static-gzip';
 import NodeCache from 'node-cache';
-
+require('dotenv').config();
 global.__FAME_CONFIG__ = createFameConfig();
 
 import Raven from 'raven';
