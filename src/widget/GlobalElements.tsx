@@ -37,7 +37,7 @@ if (spreeState.UserData) {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const cmsConfig = state.CmsModel.elements.find(x => x.slug === 'global-page');
+  const cmsConfig = state.CmsModel.elements.find((x) => x.slug === 'global-page');
 
   return {
     user: state.UserModel,
