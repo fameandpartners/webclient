@@ -1,4 +1,5 @@
-import { HeightUnitType, SiteVersion, SizeUnitType } from '@common/constants';
+import { SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_COMPONENT, HeightUnitType, SiteVersion, SizeUnitType } from '@common/constants';
+import { setLocalData } from '@common/services/localStorage';
 import { ComponentType } from '@common/utils/component-type';
 import { sortByOrder, mapToCode } from '@common/utils/product';
 import { isHeightValid, isSizeValid } from '@common/utils/product-validation';
@@ -38,8 +39,12 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
 
   private onSelectHeightUnit = (e: string) => {
     if (e === HeightUnitType.CM) {
+      setLocalData(SAVED_HEIGHT, this.state.cm);
+      setLocalData(SAVED_HEIGHT_UNIT, HeightUnitType.CM);
       this.props.saveSize({ height: this.state.cm, heightUnit: HeightUnitType.CM });
     } else {
+      setLocalData(SAVED_HEIGHT, this.state.inches || 0);
+      setLocalData(SAVED_HEIGHT_UNIT, HeightUnitType.INCH);
       this.props.saveSize({ height: this.state.inches || 0, heightUnit: HeightUnitType.INCH });
     }
   }
@@ -55,6 +60,8 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
       inches = convertCmToTotalInch(cm);
     }
 
+    setLocalData(SAVED_HEIGHT, height!!);
+    setLocalData(SAVED_HEIGHT_UNIT, HeightUnitType.CM);
     this.props.saveSize({ height: height!!, heightUnit: HeightUnitType.CM });
 
     this.setState({
@@ -68,6 +75,8 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
     const cm = convertTotalInchToCm(inches);
 
     this.setState({ inches, cm });
+    setLocalData(SAVED_HEIGHT, inches || 0);
+    setLocalData(SAVED_HEIGHT_UNIT, HeightUnitType.INCH);
     this.props.saveSize({ height: inches, heightUnit: HeightUnitType.INCH });
   }
 
@@ -283,8 +292,12 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
                   className={classnames('size-option', { active: !!(selectedSize && selectedSize.code === size.value) })}
                   onClick={() => {
                     const component = customizedProduct.product.components.find((x) => x.code === size.value)!!;
+                    const sizeUnit = siteVersion === SiteVersion.US ? SizeUnitType.US : SizeUnitType.AU;
+
                     this.props.onSelected([{ section: this.props.section, components: [component] }]);
-                    this.props.saveSize({ sizeUnit: siteVersion === SiteVersion.US ? SizeUnitType.US : SizeUnitType.AU });
+                    setLocalData(SAVED_SIZE_COMPONENT, component);
+                    setLocalData(SAVED_SIZE_UNIT, sizeUnit);
+                    this.props.saveSize({ sizeUnit });
                     this.setState({ showSizeError: true });
                   }}
                 >

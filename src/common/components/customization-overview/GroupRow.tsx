@@ -54,7 +54,6 @@ class GroupRow extends React.PureComponent<Props> {
     const components: Array<Component | OrderComponent> = customizedProduct.components;
 
     const hasAggregateTitle = (group.sectionGroups as Array<SectionGroup | OrderSectionGroup>).some((x) => x.aggregateTitle !== undefined && x.aggregateTitle !== '');
-    console.log('--> hasAggTitle', hasAggregateTitle);
 
     const codesInSectionGroup = sectionGroups
       .flatMap((sg) => sg.sections)

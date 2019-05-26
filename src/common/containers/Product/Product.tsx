@@ -1,4 +1,5 @@
-import { DEFAULT_HEIGHT_UNIT, DEFAULT_SIZE_UNIT, SiteVersion } from '@common/constants';
+import { DEFAULT_HEIGHT_UNIT, DEFAULT_SIZE_UNIT, SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_COMPONENT, SiteVersion } from '@common/constants';
+import { getLocalData } from '@common/services/localStorage';
 import { AddToCart } from '@common/rematch/models/cart';
 import { ProductsModelRootState } from '@common/rematch/models/products';
 import { OrientationType } from '@common/utils/orientation-type';
@@ -19,6 +20,7 @@ import FullScreenLoader from '@components/base/FullScreenLoader';
 import { formatProductId } from '@common/utils/render-url-helper';
 import { CmsElementState } from '@common/rematch/models/cms';
 import { CmsPageGlobalConfig } from '@components/cms/CmsPageGlobalConfig';
+import { ComponentType } from '@common/utils/component-type';
 
 interface Props extends RouteComponentProps<{ slug: string }> {
   products: ProductsModelRootState;
@@ -50,12 +52,10 @@ class Product extends React.Component<Props, State> {
     const id = getIdFromSlug(match.params.slug);
 
     const product = products.products[id];
-    console.log('--> product products', products);
+    console.log('--> product products', products.products[id]);
 
     if (product) {
       const { currentCustomizedProduct } = prevState;
-      console.log(currentCustomizedProduct);
-
       const { colorIdOrCodes, componentCodes } = getComponentsFromSlug(match.params.slug, nextProps.location.search);
 
       const components: Component[] = componentCodes.map((code) => product.components.find((x) => x.code === code)).notNullOrUndefined();
@@ -64,9 +64,10 @@ class Product extends React.Component<Props, State> {
       const urlComponents = [...components, ...colors].notNullOrUndefined();
 
       // Need to load saved localStorage height and sizeComponent
-      let height = 76;
-      let heightUnit = DEFAULT_HEIGHT_UNIT[siteVersion];
-      let sizeUnit = DEFAULT_SIZE_UNIT[siteVersion];
+      let height: null | number = getLocalData(SAVED_HEIGHT);
+      let heightUnit = getLocalData(SAVED_HEIGHT_UNIT) || DEFAULT_HEIGHT_UNIT[siteVersion];
+      let sizeUnit = getLocalData(SAVED_SIZE_UNIT) || DEFAULT_SIZE_UNIT[siteVersion];
+      const sizeComponent = getLocalData(SAVED_SIZE_COMPONENT);
 
       const parentCodes = getParentComponentCodes(product);
       const parentFromUrl = components.find((x) => parentCodes.includes(x.code));
@@ -75,10 +76,13 @@ class Product extends React.Component<Props, State> {
       let selectedComponents: Component[] = [...urlComponents];
 
       if (currentCustomizedProduct) {
-        height = currentCustomizedProduct.height;
-        sizeUnit = currentCustomizedProduct.sizeUnit;
-        heightUnit = currentCustomizedProduct.heightUnit;
+        console.log('--> currentCustomizedProduct', currentCustomizedProduct);
+        height = currentCustomizedProduct.height || height;
+        sizeUnit = currentCustomizedProduct.sizeUnit || sizeUnit;
+        heightUnit = currentCustomizedProduct.heightUnit || heightUnit;
         selectedComponents = [...currentCustomizedProduct.components.filter((x) => !componentShouldBeInUrl(x)), ...selectedComponents];
+      } else {
+        selectedComponents = [...selectedComponents, sizeComponent];
       }
 
       const defaultComponents = getRelevantComponents({ product, selectedComponents, additionalComponent: undefined, defaultParent });
