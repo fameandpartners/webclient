@@ -42,7 +42,7 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
     } else {
       this.props.saveSize({ height: this.state.inches || 0, heightUnit: HeightUnitType.INCH });
     }
-  };
+  }
 
   private updateCm = (e: FormEvent<HTMLInputElement>) => {
     let cm = null;
@@ -61,7 +61,7 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
       cm,
       inches
     });
-  };
+  }
 
   private updateInches = (totalInches: string) => {
     const inches = parseInt(totalInches, 10);
@@ -69,7 +69,7 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
 
     this.setState({ inches, cm });
     this.props.saveSize({ height: inches, heightUnit: HeightUnitType.INCH });
-  };
+  }
 
   private sizeName(size: Component) {
     const { siteVersion } = this.props;
