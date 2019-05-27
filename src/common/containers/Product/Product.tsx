@@ -80,7 +80,11 @@ class Product extends React.Component<Props, State> {
         heightUnit = currentCustomizedProduct.heightUnit || heightUnit;
         selectedComponents = [...currentCustomizedProduct.components.filter((x) => !componentShouldBeInUrl(x)), ...selectedComponents];
       } else {
-        selectedComponents = [...selectedComponents, sizeComponent];
+        if (sizeComponent) {
+          selectedComponents = [...selectedComponents, sizeComponent];
+        } else {
+          selectedComponents = [...selectedComponents];
+        }
       }
 
       const defaultComponents = getRelevantComponents({ product, selectedComponents, additionalComponent: undefined, defaultParent });
