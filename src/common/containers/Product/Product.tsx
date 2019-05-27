@@ -52,7 +52,6 @@ class Product extends React.Component<Props, State> {
     const id = getIdFromSlug(match.params.slug);
 
     const product = products.products[id];
-    console.log('--> product products', products.products[id]);
 
     if (product) {
       const { currentCustomizedProduct } = prevState;
@@ -76,7 +75,6 @@ class Product extends React.Component<Props, State> {
       let selectedComponents: Component[] = [...urlComponents];
 
       if (currentCustomizedProduct) {
-        console.log('--> currentCustomizedProduct', currentCustomizedProduct);
         height = currentCustomizedProduct.height || height;
         sizeUnit = currentCustomizedProduct.sizeUnit || sizeUnit;
         heightUnit = currentCustomizedProduct.heightUnit || heightUnit;

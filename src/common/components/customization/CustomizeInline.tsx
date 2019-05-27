@@ -118,7 +118,6 @@ class CustomizeInline extends React.PureComponent<Props, State> {
   }
 
   private goTo(step: number, trackingLabel: string) {
-    console.log('--> going to', this.props.uncomittedCustomizedProduct);
     const { currentGroup, currentSectionGroup } = this.props;
 
     if (!isSectionGroupValid(currentSectionGroup, this.props.uncomittedCustomizedProduct)) {
@@ -141,7 +140,6 @@ class CustomizeInline extends React.PureComponent<Props, State> {
   }
 
   private next(trackingLabel: string) {
-    console.log('--> done button clicked');
     const { currentSectionGroup, currentGroup } = this.props;
     const isCadCustomisation = currentSectionGroup.previewType === PreviewType.Cad;
 

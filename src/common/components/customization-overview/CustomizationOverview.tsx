@@ -16,7 +16,6 @@ interface Props {
 
 const CustomizationOverview: React.SFC<Props> = ({ customizedProduct, startCustomize, includeSeparators, canCustomize, condensed, siteVersion }) => {
   const { product } = customizedProduct;
-  console.log('---> customisation overview', customizedProduct);
   return (
     <div>
       {(product.groups as Array<Group | OrderGroup>)
