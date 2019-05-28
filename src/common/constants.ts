@@ -14,7 +14,8 @@ export enum SizeUnitType {
 export const SAVED_HEIGHT = 'SavedHeight';
 export const SAVED_HEIGHT_UNIT = 'SavedHeightUnit';
 export const SAVED_SIZE_UNIT = 'SavedSizeUnit';
-export const SAVED_SIZE_COMPONENT = 'SavedSizeComponent';
+export const SAVED_SIZE_AU = 'SizeAU';
+export const SAVED_SIZE_US = 'SizeUS';
 
 export enum SiteVersion {
   US = 'en-US',

@@ -1,10 +1,10 @@
-import { DEFAULT_HEIGHT_UNIT, DEFAULT_SIZE_UNIT, SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_COMPONENT, SiteVersion } from '@common/constants';
+import { DEFAULT_HEIGHT_UNIT, DEFAULT_SIZE_UNIT, SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_AU, SAVED_SIZE_US, SiteVersion } from '@common/constants';
 import { getLocalData } from '@common/services/localStorage';
 import { AddToCart } from '@common/rematch/models/cart';
 import { ProductsModelRootState } from '@common/rematch/models/products';
 import { OrientationType } from '@common/utils/orientation-type';
 import { PreviewType } from '@common/utils/preview-type';
-import { getRelevantComponents, isNewProduct } from '@common/utils/product';
+import { getRelevantComponents, isNewProduct, findSizeComponent } from '@common/utils/product';
 import { getDefaultParent, getParentComponentCodes } from '@common/utils/product-component';
 import { getFirstInvalidSectionGroup } from '@common/utils/product-validation';
 import { componentShouldBeInUrl, generateProductDetailUrl, getComponentsFromSlug, getIdFromSlug, URL_COMPONENT_SEPARATOR } from '@common/utils/url-helper';
@@ -66,7 +66,9 @@ class Product extends React.Component<Props, State> {
       let height: null | number = getLocalData(SAVED_HEIGHT);
       let heightUnit = getLocalData(SAVED_HEIGHT_UNIT) || DEFAULT_HEIGHT_UNIT[siteVersion];
       let sizeUnit = getLocalData(SAVED_SIZE_UNIT) || DEFAULT_SIZE_UNIT[siteVersion];
-      const sizeComponent = getLocalData(SAVED_SIZE_COMPONENT);
+      const sizeAu = getLocalData(SAVED_SIZE_AU);
+      const sizeUs = getLocalData(SAVED_SIZE_US);
+      const sizeComponent = findSizeComponent(product.components, sizeAu, sizeUs);
 
       const parentCodes = getParentComponentCodes(product);
       const parentFromUrl = components.find((x) => parentCodes.includes(x.code));

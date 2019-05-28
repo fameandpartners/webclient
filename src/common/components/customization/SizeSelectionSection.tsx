@@ -1,4 +1,4 @@
-import { SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_COMPONENT, HeightUnitType, SiteVersion, SizeUnitType } from '@common/constants';
+import { SAVED_HEIGHT, SAVED_HEIGHT_UNIT, SAVED_SIZE_UNIT, SAVED_SIZE_AU, SAVED_SIZE_US, HeightUnitType, SiteVersion, SizeUnitType } from '@common/constants';
 import { setLocalData } from '@common/services/localStorage';
 import { ComponentType } from '@common/utils/component-type';
 import { sortByOrder, mapToCode } from '@common/utils/product';
@@ -293,9 +293,11 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
                   onClick={() => {
                     const component = customizedProduct.product.components.find((x) => x.code === size.value)!!;
                     const sizeUnit = siteVersion === SiteVersion.US ? SizeUnitType.US : SizeUnitType.AU;
+                    const metaData = component.meta || {};
 
                     this.props.onSelected([{ section: this.props.section, components: [component] }]);
-                    setLocalData(SAVED_SIZE_COMPONENT, component);
+                    setLocalData(SAVED_SIZE_AU, metaData.sizeAu);
+                    setLocalData(SAVED_SIZE_US, metaData.sizeUs);
                     setLocalData(SAVED_SIZE_UNIT, sizeUnit);
                     this.props.saveSize({ sizeUnit });
                     this.setState({ showSizeError: true });
