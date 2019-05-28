@@ -39,14 +39,14 @@ export const mapToCode = (component: Partial<Component> | Partial<OrderComponent
 
 export const filterComponentInGroup = (group: Group) => (component: Component) =>
   group.sectionGroups
-    .flatMap(g => g.sections)
-    .flatMap(s => s.options)
+    .flatMap((g) => g.sections)
+    .flatMap((s) => s.options)
     .map(mapToCode)
     .includes(component.code);
 
 export const filterComponentInSectionGroup = (sectionGroup: SectionGroup) => (component: Component) =>
   sectionGroup.sections
-    .flatMap(s => s.options)
+    .flatMap((s) => s.options)
     .map(mapToCode)
     .includes(component.code);
 
@@ -96,11 +96,11 @@ const filterByParent = (parent: Component) => (option: SectionOption) => option.
 const filterByParentAndDefault = (parent: Component) => (option: SectionOption) => (option.parentOptionId === parent.code || option.parentOptionId === null) && option.isDefault;
 
 export const isIncompatibleIn = (component: Component, category: string, componentCodes: string[]) => {
-  return category in component.incompatibleWith && component.incompatibleWith[category].some(x => x.every(incompat => componentCodes.includes(incompat)));
+  return category in component.incompatibleWith && component.incompatibleWith[category].some((x) => x.every((incompat) => componentCodes.includes(incompat)));
 };
 
 const isIncompatibleWith = (category: string, componentCodes: string[], selectedComponent: Component, checkingComponent: Component) => {
-  return category in selectedComponent.incompatibleWith && selectedComponent.incompatibleWith[category].filter(x => x.includes(checkingComponent.code)).some(x => x.every(incompat => componentCodes.includes(incompat)));
+  return category in selectedComponent.incompatibleWith && selectedComponent.incompatibleWith[category].filter((x) => x.includes(checkingComponent.code)).some((x) => x.every((incompat) => componentCodes.includes(incompat)));
 };
 
 /**
@@ -124,7 +124,7 @@ export const filterIncompatbilities = (components: Component[], currentSelectedC
     }
 
     // SECOND PASS: Check to see if anything selected is incompatbile with this component (that incompatible with this)
-    const isCurrentComponentIncompatibleWithSelection = currentSelectedComponents.some(x => {
+    const isCurrentComponentIncompatibleWithSelection = currentSelectedComponents.some((x) => {
       let isIncompatibleWithParent = false;
 
       if (parent) {
@@ -150,7 +150,7 @@ export const filterIncompatbilities = (components: Component[], currentSelectedC
 // #endregion
 
 export const totalPrice = ({ product, components }: CustomizedProduct) => {
-  return product.price + components.map(p => p.price).reduce((a, b) => a + b, 0);
+  return product.price + components.map((p) => p.price).reduce((a, b) => a + b, 0);
 };
 
 export const totalStrikeThroughPrice = ({ product, components }: CustomizedProduct) => {
@@ -159,8 +159,8 @@ export const totalStrikeThroughPrice = ({ product, components }: CustomizedProdu
 
   if (total) {
     const componentStrikeThroughTotals = components
-      .filter(x => x.strikeThroughPrice && x.strikeThroughPrice > 0)
-      .map(x => x.strikeThroughPrice)
+      .filter((x) => x.strikeThroughPrice && x.strikeThroughPrice > 0)
+      .map((x) => x.strikeThroughPrice)
       .notNullOrUndefined()
       .reduce((a, b) => a + b, 0);
     total += componentStrikeThroughTotals;
@@ -178,9 +178,9 @@ export function getDressLengthClass(components: Component[]): string {
 
 function getRelevantComponentsFromParent(product: Product, selectedComponents: Component[], parent: Component) {
   const relevantOptions = getOptionsForParent(product, parent);
-  const relevantCustomizationSelectedComponents = selectedComponents.filter(filterByComponentType(ComponentType.Customization)).filter(x => relevantOptions.includes(x.code));
+  const relevantCustomizationSelectedComponents = selectedComponents.filter(filterByComponentType(ComponentType.Customization)).filter((x) => relevantOptions.includes(x.code));
 
-  return [...selectedComponents.filter(x => x.componentTypeCategory !== ComponentType.Customization), ...relevantCustomizationSelectedComponents];
+  return [...selectedComponents.filter((x) => x.componentTypeCategory !== ComponentType.Customization), ...relevantCustomizationSelectedComponents];
 }
 
 function getRelevantComponentsFromComponentPerspective(product: Product, relevantComponents: Component[], parent?: Component, additionalComponent?: Component) {
@@ -197,14 +197,14 @@ function getRelevantComponentsFromComponentPerspective(product: Product, relevan
       const section = getSectionForComponentCode(product, additionalComponent.code);
       if (section.selectionType === SelectionType.RequiredOne) {
         // Remove any others that are selected
-        updatedRelevantComponents = updatedRelevantComponents.filter(x => x.componentTypeId !== additionalComponent.componentTypeId);
+        updatedRelevantComponents = updatedRelevantComponents.filter((x) => x.componentTypeId !== additionalComponent.componentTypeId);
       }
 
       updatedRelevantComponents.push(additionalComponent);
     }
 
     // FIXME: Can optimise this due to the loop continuing on removed elements
-    updatedRelevantComponents.forEach(c => {
+    updatedRelevantComponents.forEach((c) => {
       const updatedRelevantComponentCodes = updatedRelevantComponents.map(mapToCode);
       // isIncompatibleWith for multiple, isIncompatibleIn for singluar and this should cover both directions
       let a = false;
@@ -214,13 +214,13 @@ function getRelevantComponentsFromComponentPerspective(product: Product, relevan
       const b = isIncompatibleWith(DEFAULT_GLOBAL_OPTIONS_NAME, updatedRelevantComponentCodes, c, additionalComponent) || isIncompatibleIn(additionalComponent, DEFAULT_GLOBAL_OPTIONS_NAME, [c.code]);
 
       if (a || b) {
-        updatedRelevantComponents = updatedRelevantComponents.filter(x => x.code !== c.code);
+        updatedRelevantComponents = updatedRelevantComponents.filter((x) => x.code !== c.code);
       }
     });
 
     if (!isSelected) {
       // Remove the component if it wasn't originally selected.
-      updatedRelevantComponents = updatedRelevantComponents.filter(x => x.code !== additionalComponent.code);
+      updatedRelevantComponents = updatedRelevantComponents.filter((x) => x.code !== additionalComponent.code);
     }
   }
 
@@ -229,13 +229,13 @@ function getRelevantComponentsFromComponentPerspective(product: Product, relevan
 }
 
 function getMissingRequiredSections(sections: Section[], relevantComponents: Component[]) {
-  const requiredSections = sections.filter(x => x.selectionType === SelectionType.RequiredOne).filter(x => x.componentTypeCategory !== ComponentType.Size);
+  const requiredSections = sections.filter((x) => x.selectionType === SelectionType.RequiredOne).filter((x) => x.componentTypeCategory !== ComponentType.Size);
 
-  const relevantComponentTypes = relevantComponents.map(x => x.componentTypeId);
+  const relevantComponentTypes = relevantComponents.map((x) => x.componentTypeId);
   return requiredSections
-    .map(x => x.componentTypeId)
+    .map((x) => x.componentTypeId)
     .difference(relevantComponentTypes)
-    .map(x => requiredSections.find(s => s.componentTypeId === x))
+    .map((x) => requiredSections.find((s) => s.componentTypeId === x))
     .notNullOrUndefined() as Section[];
 }
 
@@ -248,7 +248,7 @@ function getMissingRequiredSections(sections: Section[], relevantComponents: Com
  * @param additionalComponent
  */
 export function getDefaultSelectedComponents(product: Product, relevantComponents: Component[], parent?: Component, additionalComponent?: Component): Component[] {
-  const sections = product.groups.flatMap(x => x.sectionGroups).flatMap(x => x.sections);
+  const sections = product.groups.flatMap((x) => x.sectionGroups).flatMap((x) => x.sections);
   let relevantWithAdditionalComponents = [...relevantComponents, additionalComponent].notNullOrUndefined().uniqueMap();
 
   // On default selection for an empty entry e.g. when just entering custom-dress-FPG1001
