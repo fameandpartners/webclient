@@ -35,67 +35,67 @@ import { transformToReactComponents } from '@containers/CmsPage/CmsPage';
 const FameLogo = require('@svg/i-fame-logo.svg').default;
 
 interface Props extends RouteComponentProps<{}> {
-    addToCart: (cp: CustomizedProduct) => void;
-    isAddingToCart: boolean;
-    isErrorAddingToCart: boolean;
-    customizeBeforeAddingToCart: boolean;
+  addToCart: (cp: CustomizedProduct) => void;
+  isAddingToCart: boolean;
+  isErrorAddingToCart: boolean;
+  customizeBeforeAddingToCart: boolean;
 
-    currentCustomizedProduct: CustomizedProduct;
-    productListSummaries: ProductListSummaries;
-    orientation: OrientationType;
-    showOrientation: (orientation: OrientationType, trackEvent: boolean) => void;
-    saveSelection: (customizedProduct: CustomizedProduct) => void;
+  currentCustomizedProduct: CustomizedProduct;
+  productListSummaries: ProductListSummaries;
+  orientation: OrientationType;
+  showOrientation: (orientation: OrientationType, trackEvent: boolean) => void;
+  saveSelection: (customizedProduct: CustomizedProduct) => void;
 
-    goToCustomizationStep: (group: Group, sectionGroup: SectionGroup | null, customizedProduct: CustomizedProduct, trackingLabel: string) => void;
-    goToGallery: (position: number, customizedProduct: CustomizedProduct) => void;
-    goToProductPage: (np: CustomizedProduct) => void;
+  goToCustomizationStep: (group: Group, sectionGroup: SectionGroup | null, customizedProduct: CustomizedProduct, trackingLabel: string) => void;
+  goToGallery: (position: number, customizedProduct: CustomizedProduct) => void;
+  goToProductPage: (np: CustomizedProduct) => void;
 
-    loadProductSummaries: (pids: string[]) => void;
-    loadSimilarSilhouettes: (silhouette: string) => void;
+  loadProductSummaries: (pids: string[]) => void;
+  loadSimilarSilhouettes: (silhouette: string) => void;
 
-    pageConfig?: CmsElementState<CmsPageGlobalConfig>;
+  pageConfig?: CmsElementState<CmsPageGlobalConfig>;
 }
 
 interface State {
-    currentImageIndex: number;
-    initialCustomizedProduct: CustomizedProduct;
-    uncomittedCustomizedProduct: CustomizedProduct;
-    currentSectionGroup: SectionGroup | null;
-    hasChatted: boolean;
+  currentImageIndex: number;
+  initialCustomizedProduct: CustomizedProduct;
+  uncomittedCustomizedProduct: CustomizedProduct;
+  currentSectionGroup: SectionGroup | null;
+  hasChatted: boolean;
 }
 
 class ProductPage extends React.PureComponent<Props, State> {
     public state: State = {
-        currentImageIndex: 0,
-        initialCustomizedProduct: this.props.currentCustomizedProduct,
-        uncomittedCustomizedProduct: this.props.currentCustomizedProduct,
-        currentSectionGroup: null,
-        hasChatted: false
+      currentImageIndex: 0,
+      initialCustomizedProduct: this.props.currentCustomizedProduct,
+      uncomittedCustomizedProduct: this.props.currentCustomizedProduct,
+      currentSectionGroup: null,
+      hasChatted: false
     };
 
     public static getDerivedStateFromProps(nextProps: Props, prevState: State): Partial<State> {
-        const nextCodes = nextProps.currentCustomizedProduct.components.map(mapToCode);
-        const currCodes = prevState.initialCustomizedProduct.components.map(mapToCode);
-        if (nextCodes.allDifference(currCodes).length > 0) {
-            const pid = formatProductId(nextProps.currentCustomizedProduct);
+      const nextCodes = nextProps.currentCustomizedProduct.components.map(mapToCode);
+      const currCodes = prevState.initialCustomizedProduct.components.map(mapToCode);
+      if (nextCodes.allDifference(currCodes).length > 0) {
+          const pid = formatProductId(nextProps.currentCustomizedProduct);
 
-            if (nextProps.productListSummaries[pid]) {
-                nextProps.loadSimilarSilhouettes(nextProps.productListSummaries[pid]!.primarySilhouetteId);
-            }
+          if (nextProps.productListSummaries[pid]) {
+              nextProps.loadSimilarSilhouettes(nextProps.productListSummaries[pid]!.primarySilhouetteId);
+          }
 
-            return {
-                initialCustomizedProduct: nextProps.currentCustomizedProduct,
-                uncomittedCustomizedProduct: nextProps.currentCustomizedProduct,
-            };
-        }
-        return {};
+          return {
+              initialCustomizedProduct: nextProps.currentCustomizedProduct,
+              uncomittedCustomizedProduct: nextProps.currentCustomizedProduct,
+          };
+      }
+      return {};
     }
 
     private onStartChat = () => {
-        this.setState({hasChatted: true});
-        if ('$zopim' in global) {
-            (global as any).$zopim.livechat.window.show();
-        }
+      this.setState({hasChatted: true});
+      if ('$zopim' in global) {
+          (global as any).$zopim.livechat.window.show();
+      }
     }
 
     // #region Renders
