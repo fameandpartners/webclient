@@ -195,7 +195,6 @@ class SearchResultPage extends React.PureComponent<Props> {
             &__Filter {
               top: $navbar-height;
               bottom: 0;
-              max-height: calc(100vh - #{$navbar-height});
               overflow: auto;
               scroll-behavior: smooth;
               padding-right: $gutter;
