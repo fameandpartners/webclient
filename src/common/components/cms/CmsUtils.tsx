@@ -13,7 +13,7 @@ export const CmsImage: React.SFC<{media: CmsAssetImage, dontMaintainAspectRatio?
         .join(', ');
 
     return (
-        <div className="ImageWrapper" style={{position: 'relative', paddingBottom: dontMaintainAspectRatio ? undefined : `${media.height * 100.0 / media.width}%`, backgroundColor: '#f5f5f5'}}>
+        <div className="ImageWrapper" style={{position: 'relative', paddingBottom: dontMaintainAspectRatio ? undefined : `${media.height * 100.0 / media.width}%`, backgroundColor: '#ffffff'}}>
             <picture style={{position: 'absolute', top: 0, bottom: 0, right: 0, left: 0}}>
                 <source srcSet={srcSetWebp} type="image/webp" />
                 <img src={media.url} alt={media.description} width={media.width} height={media.height} srcSet={srcSet}/>
