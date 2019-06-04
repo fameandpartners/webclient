@@ -225,7 +225,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
                     }
 
                     :global(.ImageWrapper){
-                        background-color: $color-grey14;
+                        background-color: $color-white;
                     }
                 }
 
