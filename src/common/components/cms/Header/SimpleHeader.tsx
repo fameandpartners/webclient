@@ -65,6 +65,26 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
       emailCapture
     } = this.props;
 
+    const innerComponent = (
+      <div className="inner">
+        {title && (
+          <h1>
+            <WysiwygText text={title} />
+          </h1>
+        )}
+        {subtitle && (
+          <h2>
+            <WysiwygText text={subtitle} />
+          </h2>
+        )}
+        {button && (
+          <Button inline url={buttonUrl} transparent={buttonStyle === 'Transparent (Light)'} transparentBlack={buttonStyle === 'Transparent (Dark)'} secondary={buttonStyle === 'Secondary'} className="HeaderSimple__CTA" onClick={() => trackCMSHeaderClick(id, button)}>
+            {button}
+          </Button>
+        )}
+        {emailCapture && <div className="HeaderSimple__EmailCaptureCmsContainer">{emailCapture}</div>}
+      </div>
+    );
     const textOverlayClasses = classnames('text', {
       'text--no-overlay': (!media || media.length === 0) && !video,
       'text--overlay': (media && media.length > 0) || video,
@@ -306,26 +326,13 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
                 <div className="HeaderSimple__MobileVideo">{mobileVideo}</div>
               </Mobile>
             )}
-            <a className={textOverlayClasses} style={{ textDecoration: 'none' }} href={mediaUrl}>
-              <div className="inner">
-                {title && (
-                  <h1>
-                    <WysiwygText text={title} />
-                  </h1>
-                )}
-                {subtitle && (
-                  <h2>
-                    <WysiwygText text={subtitle} />
-                  </h2>
-                )}
-                {button && (
-                  <Button inline url={buttonUrl} transparent={buttonStyle === 'Transparent (Light)'} transparentBlack={buttonStyle === 'Transparent (Dark)'} secondary={buttonStyle === 'Secondary'} className="HeaderSimple__CTA" onClick={() => trackCMSHeaderClick(id, button)}>
-                    {button}
-                  </Button>
-                )}
-                {emailCapture && <div className="HeaderSimple__EmailCaptureCmsContainer">{emailCapture}</div>}
-              </div>
-            </a>
+            {mediaUrl ? (
+              <a className={textOverlayClasses} style={{ textDecoration: 'none' }} href={mediaUrl}>
+                {innerComponent}
+              </a>
+            ) : (
+              <div className={textOverlayClasses}>{innerComponent}</div>
+            )}
           </div>
         </BaseSection>
       </React.Fragment>
