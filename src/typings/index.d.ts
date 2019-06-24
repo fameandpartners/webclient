@@ -52,6 +52,7 @@ declare global {
     main(): void;
     dataLayer: DataLayer;
     __PRELOADED_STATE__: any;
+    _learnq: any;
   }
   module NodeJS {
     interface Global {
