@@ -98,7 +98,6 @@ export function trackOrderInProgress(cart: Order, siteVersion: SiteVersion, user
   console.log('--> track order in progress', cart, user);
   if (user && user.email) {
     // klaviyo tracking
-    console.log('---> learn', window._learnq);
     const klaviyo = window._learnq;
     klaviyo.push([
       'identify',
@@ -108,7 +107,6 @@ export function trackOrderInProgress(cart: Order, siteVersion: SiteVersion, user
         $last_name: user.lastName
       }
     ]);
-    console.log('----< sending checkout');
     klaviyo.push([
       'track',
       'Started Checkout',
