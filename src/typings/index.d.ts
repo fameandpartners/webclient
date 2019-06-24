@@ -3,63 +3,62 @@ import { SiteVersion } from '@common/constants';
 import { DataLayer } from '@common/analytics/datalayer';
 
 declare module '*.json' {
-    const content: any;
-    export default content;
+  const content: any;
+  export default content;
 }
 
 declare module '*.svg' {
-    const content: any;
-    export default content;
+  const content: any;
+  export default content;
 }
 
 export type HelmetContext = {
-    helmet?: HelmetData;
-}
-
-export type DeepPartial<T> = {
-    [P in Extract<keyof T, string>]?: DeepPartial<T[P]>;
+  helmet?: HelmetData;
 };
 
+export type DeepPartial<T> = { [P in Extract<keyof T, string>]?: DeepPartial<T[P]> };
+
 export type FameConfig = {
-    NEWSLETTER_SIGNUP_URL: string;
-    SENTRY_DSN?: string;
-    ROBOTS_INDEX: boolean;
-    GTM_CONTAINER?: string;
-    RELEASE: string;
-    ENVIRONMENT: string;
-    FLAGS:  {
-        MAINTENANCE_MODE?: boolean,
-    }
-    URLS: {
-        [SiteVersion.AU]: {
-            frontend: string;
-            api: string;
-            pcApi: string;
-            renderUrl: string;
-            renderFallbackUrl: string;
-        }
-        [SiteVersion.US]: {
-            frontend: string;
-            api: string;
-            pcApi: string;
-            renderUrl: string;
-            renderFallbackUrl: string;
-        }
-    }
-}
+  NEWSLETTER_SIGNUP_URL: string;
+  SENTRY_DSN?: string;
+  ROBOTS_INDEX: boolean;
+  GTM_CONTAINER?: string;
+  RELEASE: string;
+  ENVIRONMENT: string;
+  KLAVIYO_KEY: string;
+  FLAGS: {
+    MAINTENANCE_MODE?: boolean;
+  };
+  URLS: {
+    [SiteVersion.AU]: {
+      frontend: string;
+      api: string;
+      pcApi: string;
+      renderUrl: string;
+      renderFallbackUrl: string;
+    };
+    [SiteVersion.US]: {
+      frontend: string;
+      api: string;
+      pcApi: string;
+      renderUrl: string;
+      renderFallbackUrl: string;
+    };
+  };
+};
 
 declare global {
-    interface Window {
-        main(): void;
-        dataLayer: DataLayer;
-        __PRELOADED_STATE__: any;
+  interface Window {
+    main(): void;
+    dataLayer: DataLayer;
+    __PRELOADED_STATE__: any;
+  }
+  module NodeJS {
+    interface Global {
+      dataLayer: DataLayer;
+      __FAME_CONFIG__: FameConfig;
     }
-    module NodeJS {
-        interface Global {
-            dataLayer: DataLayer;
-            __FAME_CONFIG__: FameConfig;
-        }
-    }
+  }
 }
 
 export * from './user';
