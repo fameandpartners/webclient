@@ -96,9 +96,9 @@ export function trackOrderInProgress(cart: Order, siteVersion: SiteVersion, user
     tid = data._bta_tid;
   }
   console.log('--> track order in progress', cart, user);
+  const klaviyo = window._learnq || [];
   if (user && user.email) {
     // klaviyo tracking
-    const klaviyo = window._learnq;
     klaviyo.push([
       'identify',
       {
