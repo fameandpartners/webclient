@@ -95,7 +95,7 @@ export function trackOrderInProgress(cart: Order, siteVersion: SiteVersion, user
   if (data && '_bta_tid' in data) {
     tid = data._bta_tid;
   }
-  console.log('--> track order in progress', cart, user);
+  console.log('--> track order in progress', cart, user, tid);
   const klaviyo = window._learnq || [];
   if (user && user.email) {
     // klaviyo tracking
