@@ -268,7 +268,7 @@ export function trackViewedProduct(product: CustomizedProduct, productSummary: P
     ProductID: product.product.productId,
     ImageURL: (image && image.src && image.src.length > 0 && image.src[0].url) || '',
     URL: queryString.url,
-    Price: totalPrice(product)
+    Price: totalPrice(product) / 100.0
   };
   klaviyo.push(['track', 'Viewed Product', item]);
   klaviyo.push([
