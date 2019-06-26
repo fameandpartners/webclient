@@ -4,7 +4,7 @@ import { CustomizedProduct, ProductListSummary, Section, SectionGroup, Group, Co
 import { totalPrice } from '@common/utils/product';
 import { OrientationType } from '@common/utils/orientation-type';
 import { GTMAddToCartEvent, GTMRemoveFromCartEvent, GTMGenericEvent, GTMPageView, GTMPageType, GTMSocialSharedEvent, GTMProduct, GTMOrderEvent } from '@common/analytics/datalayer';
-import { formatProductId, findImages } from '@common/utils/render-url-helper';
+import { formatProductId, findImages, findImage } from '@common/utils/render-url-helper';
 import { SiteVersion } from '@common/constants';
 import { SearchParams } from '@containers/SearchPage/SearchPage';
 import { UserRootState } from '@common/rematch/models/user';
@@ -257,6 +257,33 @@ export function trackDeselectCustomization(section: Section, component: Componen
 }
 
 export function trackViewedProduct(product: CustomizedProduct, productSummary: ProductListSummary | null) {
+  const image = findImage(product);
+  const queryString = qs.parseUrl(window.location.href);
+
+  const klaviyo = window._learnq || [];
+
+  // klaviyo tracking
+  const item = {
+    ProductName: (productSummary && productSummary.name) || product.product.curationMeta.name,
+    ProductID: product.product.productId,
+    ImageURL: (image && image.src && image.src.length > 0 && image.src[0].url) || '',
+    URL: queryString.url,
+    Price: totalPrice(product)
+  };
+  klaviyo.push(['track', 'Viewed Product', item]);
+  klaviyo.push([
+    'trackViewedItem',
+    {
+      Title: item.ProductName,
+      ItemId: item.ProductID,
+      ImageUrl: item.ImageURL,
+      Url: item.URL,
+      Metadata: {
+        Price: item.Price
+      }
+    }
+  ]);
+
   const event: GTMGenericEvent = {
     event: 'Viewed',
     eventDetail: {
