@@ -55,6 +55,11 @@ class FameAPI {
     });
   }
 
+  public async subscribeNewsletter(data: any) {
+    const response = await this.webbyApi.post<any>('/api/v1/subscribe_newsletter', { ...data });
+    return Promise.resolve(response.data.user);
+  }
+
   public async trackAndApplyCampaign(data: any) {
     const response = await this.webbyApi.get<any>('/api/v1/track', { params: data });
   }

@@ -302,6 +302,7 @@ server
                     ${assets.client ? (process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`) : ''}
                     ${'runtime~vendor' in assets ? (process.env.NODE_ENV === 'production' ? `<script src="${assets['runtime~vendor'].js}" defer></script>` : `<script src="${assets['runtime~vendor'].js}" defer crossorigin></script>`) : ''}
                     ${'runtime~client' in assets ? (process.env.NODE_ENV === 'production' ? `<script src="${assets['runtime~client'].js}" defer></script>` : `<script src="${assets['runtime~client'].js}" defer crossorigin></script>`) : ''}
+                    <script type="application/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${process.env.KLAVIYO_KEY}"></script>
                 </head>
                 <body ${helmet.bodyAttributes.toString()}>
                     ${
