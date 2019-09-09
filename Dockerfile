@@ -2,6 +2,7 @@ FROM node:8.11 as build-env
 WORKDIR /app
 ENV PUBLIC_DIR=/app/public
 COPY .npmrc package.json yarn.lock ./
+COPY version ./version
 RUN yarn install
 
 COPY . .
