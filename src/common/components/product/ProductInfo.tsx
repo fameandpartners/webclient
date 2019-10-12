@@ -8,6 +8,7 @@ import { ComponentType } from '@common/utils/component-type';
 import { FormattedMessage } from 'react-intl';
 import Button from '@components/base/Button/Button';
 import AfterpayTeaser from '@components/auxiliary-product-info/AfterpayTeaser';
+import QuadpayTeaser from '@components/auxiliary-product-info/QuadpayTeaser';
 import ShareModal from '@components/share-modal/ShareModal';
 import { getBaseUrl } from '@common/services/fameApi';
 import { generateProductDetailUrl } from '@common/utils/url-helper';
@@ -253,6 +254,12 @@ class ProductInfo extends React.PureComponent<Props, State> {
         {product.paymentMethods.afterPay && (
           <p className="auxilary-info">
             <AfterpayTeaser total={total} />
+          </p>
+        )}
+
+        {1 && (
+          <p className="auxilary-info">
+            <QuadpayTeaser total={total} />
           </p>
         )}
 
