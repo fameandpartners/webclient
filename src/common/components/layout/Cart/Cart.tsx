@@ -231,14 +231,11 @@ class Cart extends Component<CartProps> {
                                 <FormattedMessage id="Cart.Subtotal" defaultMessage="Subtotal" />
                                 <span className="Cart__Total__Amount">
                                     <CurrencyAmount hideSign value={this.props.cart ? this.props.cart.itemsTotal : 0} />
-                                </span>
-                             </div>
-
-                            {1 && (
-                                <p className="auxilary-info">
+                                 </span>
+                                <span className="Cart__Total__Amount">
                                     <QuadpayTeaser total={this.props.cart ? this.props.cart.itemsTotal : 0} />
-                                 </p>
-                            )}
+                                 </span>
+                             </div>
 
                             <Button fullwidth={this.props.fullwidthCheckoutButton} url={`/checkout${isBrowser() && window.location.search ? window.location.search : ''}`}>
                                 <FormattedMessage id="Cart.Checkout" defaultMessage="CHECKOUT" />
