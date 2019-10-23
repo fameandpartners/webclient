@@ -11,6 +11,7 @@ import LineItem from '@components/layout/Cart/LineItem';
 import { isBrowser } from '@common/utils/server-client-helpers';
 import { OrderCustomizedProduct, Order } from '@typings';
 import { RETURN_INSURANCE_SKUS } from '@common/utils/product';
+import QuadpayTeaser from '@components/auxiliary-product-info/QuadpayTeaser';
 
 const CloseCrossIcon = require('@svg/i-close-cross.svg').default;
 const ShoppingBagIcon = require('@svg/i-shopping-bag.svg').default;
@@ -231,7 +232,13 @@ class Cart extends Component<CartProps> {
                                 <span className="Cart__Total__Amount">
                                     <CurrencyAmount hideSign value={this.props.cart ? this.props.cart.itemsTotal : 0} />
                                 </span>
-                            </div>
+                             </div>
+
+                            {1 && (
+                                <p className="auxilary-info">
+                                    <QuadpayTeaser total={this.props.cart ? this.props.cart.itemsTotal : 0} />
+                                 </p>
+                            )}
 
                             <Button fullwidth={this.props.fullwidthCheckoutButton} url={`/checkout${isBrowser() && window.location.search ? window.location.search : ''}`}>
                                 <FormattedMessage id="Cart.Checkout" defaultMessage="CHECKOUT" />

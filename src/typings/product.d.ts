@@ -172,7 +172,7 @@ export interface Product {
     strikeThroughPrice?: number;
 
     paymentMethods: {
-        afterPay: boolean
+      afterPay: boolean
     }
 
     size: Size;

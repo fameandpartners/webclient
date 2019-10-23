@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import { SiteVersionContext } from '@common/context/SiteVersionContext';
 import { Desktop, Mobile } from '@components/base/MediaQuerySSR';
 import { DEFAULT_GLOBAL_OPTIONS_NAME } from '@common/constants';
+import { SiteVersion } from '@common/rematch/models';
 
 const ShareArrowIcon = require('@svg/i-share-arrow.svg').default;
 const SwatchesIcon = require('@svg/i-swatches.svg').default;
