@@ -175,6 +175,11 @@ export interface Product {
       afterPay: boolean
     }
 
+    siteVersionInfo: {
+      is_au: boolean,
+      is_us: boolean
+    }
+
     size: Size;
 
     media: ProductMedia[];
