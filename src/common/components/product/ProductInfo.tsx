@@ -82,7 +82,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
 
     const dressTitle = this.getDressTitle();
 
-    //product test
+    //product test 1
     product.siteVersionInfo.is_us = true;
 
     return (
