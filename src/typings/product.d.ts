@@ -175,9 +175,12 @@ export interface Product {
       afterPay: boolean
     }
 
+    //siteVersionInfo: {
+    //  is_au: boolean;
+    //  is_us: boolean
+    //}
     siteVersionInfo: {
-      is_au: boolean,
-      is_us: boolean
+      localisationCode: string;
     }
 
     size: Size;
