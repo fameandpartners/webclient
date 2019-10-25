@@ -34,7 +34,7 @@ class FameAPI {
 
     this.webbyApi = axios.create({
       baseURL: webbyBaseURL,
-      timeout: 60000,
+      timeout: 600000,
       headers,
       paramsSerializer(params: any) {
         return qs.stringify(params, { arrayFormat: 'brackets' });
@@ -44,7 +44,7 @@ class FameAPI {
 
     this.pcApi = axios.create({
       baseURL: pcBaseURL,
-      timeout: 60000,
+      timeout: 600000,
       headers,
       paramsSerializer(params: any) {
         return qs.stringify(params, { arrayFormat: 'repeat' });

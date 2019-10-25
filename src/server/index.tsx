@@ -126,6 +126,7 @@ server
   .all(/^\/rss/, (req, res) => proxyToSpree.web(req, res))
   .all(/^\/shipments_update/, (req, res) => proxyToSpree.web(req, res))
   .all(/^\/paypal/, (req, res) => proxyToSpree.web(req, res))
+  .all(/^\/quadpay/, (req, res) => proxyToSpree.web(req, res))
   .all(/^\/afterpay/, (req, res) => proxyToSpree.web(req, res))
   .use((req, res, next) => {
     req.url = decodeURI(req.url);
