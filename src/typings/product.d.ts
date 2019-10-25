@@ -172,7 +172,12 @@ export interface Product {
     strikeThroughPrice?: number;
 
     paymentMethods: {
-        afterPay: boolean
+      afterPay: boolean
+    }
+
+    siteVersionInfo: {
+      is_au: boolean,
+      is_us: boolean
     }
 
     size: Size;
