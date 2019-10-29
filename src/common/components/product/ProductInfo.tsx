@@ -82,9 +82,6 @@ class ProductInfo extends React.PureComponent<Props, State> {
 
     const dressTitle = this.getDressTitle();
 
-    //product test 1
-    product.siteVersionInfo.is_us = true;
-
     return (
       <div className={'ProductInfo'}>
         <style jsx>{`
@@ -261,7 +258,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
           </p>
         )}
 
-        {product.siteVersionInfo.is_us && (
+        {product.siteVersionInfo.localisationCode === 'us' && (
           <p className="auxilary-info">
             <QuadpayTeaser total={total} />
           </p>
