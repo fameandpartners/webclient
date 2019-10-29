@@ -8,7 +8,7 @@ interface QuadpayTeasterProps {
 
 const NUMBER_OF_INSTALMENTS = 4;
 const MIN_QUADPAY_PRICE = 3500;
-const MAX_QUADPAY_PRICE = 150000;
+const MAX_QUADPAY_PRICE = 1500000;
 const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
   const instalment = total / NUMBER_OF_INSTALMENTS;
 
