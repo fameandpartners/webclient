@@ -7,7 +7,7 @@ const alias = require('./scripts/utils/alias');
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
-const devServerHost = process.env.HOST || 'localhost';
+const devServerHost = process.env.HOST || '192.168.1.40';
 const devServerPort = parseInt(process.env.PORT, 10) + 1 || 3003;
 
 const dotenv = getClientEnvironment('node');
