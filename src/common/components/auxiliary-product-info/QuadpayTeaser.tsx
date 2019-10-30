@@ -1,7 +1,7 @@
 import React from 'react';
 import CurrencyAmount from '@components/base/CurrencyAmount/CurrencyAmount';
 const QuadPayIcon = require('@svg/i-quadpay.svg').default;
-const ExclamatoryMark = require('@svg/exclamatory-mark.png').default;
+const ExclamatoryMark = require('@svg/i-exclamatory-mark.svg').default;
 
 interface QuadpayTeasterProps {
   total: number;
@@ -34,11 +34,11 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
   }
 
   return <span>
-    or {NUMBER_OF_INSTALMENTS} interest-free payments <CurrencyAmount value={instalment} hideSign /> by
+    or {NUMBER_OF_INSTALMENTS} interest-free payments of <CurrencyAmount value={instalment} hideSign /> by
     {' '}
     <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
     {' '}
-    <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} /></a>
+    <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
   </span>;
 };
 
