@@ -9,7 +9,7 @@ interface QuadpayTeasterProps {
 
 const NUMBER_OF_INSTALMENTS = 4;
 const MIN_QUADPAY_PRICE = 3500;
-const MAX_QUADPAY_PRICE = 1500000;
+const MAX_QUADPAY_PRICE = 150000;
 const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
   const instalment = total / NUMBER_OF_INSTALMENTS;
 
@@ -19,7 +19,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
       {' '}
       <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
       {' '}
-      <a href="https://www.quadpay.com/how-it-works/" target="new">Learn more</a>
+      <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
     </span>;
   }
 
@@ -29,7 +29,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
       {' '}
       <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
       {' '}
-      <a href="https://www.quadpay.com/how-it-works/" target="new">Learn more</a>
+      <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
     </span>;
   }
 
