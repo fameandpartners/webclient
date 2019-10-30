@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrencyAmount from '@components/base/CurrencyAmount/CurrencyAmount';
 const QuadPayIcon = require('@svg/i-quadpay.svg').default;
+const ExclamatoryMark = require('@svg/exclamatory-mark.png').default;
 
 interface QuadpayTeasterProps {
   total: number;
@@ -37,7 +38,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
     {' '}
     <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
     {' '}
-    <a href="https://www.quadpay.com/how-it-works/" target="new">Learn more</a>
+    <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} /></a>
   </span>;
 };
 
