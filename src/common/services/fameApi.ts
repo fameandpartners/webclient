@@ -130,7 +130,7 @@ class FameAPI {
     try {
       const url = `/api/v1/products`;
       const response = await this.webbyApi.get<any>(url, { params: { pids: productIds } });
-      return response.data.products;
+      return response.data;
     } catch (error) {
       console.error(error);
       throw Error(error);
