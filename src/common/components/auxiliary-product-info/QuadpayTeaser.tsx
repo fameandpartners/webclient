@@ -17,7 +17,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
     return <span>
       or {NUMBER_OF_INSTALMENTS} interest-free payments on over <CurrencyAmount value={MIN_QUADPAY_PRICE} hideSign /> by
       {' '}
-      <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
+      <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 14 }} />
       {' '}
       <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
     </span>;
@@ -27,7 +27,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
     return <span>
       or {NUMBER_OF_INSTALMENTS} interest-free payments on up to <CurrencyAmount value={MAX_QUADPAY_PRICE} hideSign /> by
       {' '}
-      <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
+      <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 14 }} />
       {' '}
       <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
     </span>;
@@ -36,7 +36,7 @@ const QuadpayTeaser: React.SFC<QuadpayTeasterProps> = ({ total }) => {
   return <span>
     or {NUMBER_OF_INSTALMENTS} interest-free payments of <CurrencyAmount value={instalment} hideSign /> by
     {' '}
-    <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 16 }} />
+    <QuadPayIcon alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 77, height: 14 }} />
     {' '}
     <a href="https://www.quadpay.com/how-it-works/" target="new"><ExclamatoryMark alt="quadpay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 16, height: 16 }} /></a>
   </span>;
