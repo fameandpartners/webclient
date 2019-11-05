@@ -8,6 +8,7 @@ import { ComponentType } from '@common/utils/component-type';
 import { FormattedMessage } from 'react-intl';
 import Button from '@components/base/Button/Button';
 import AfterpayTeaser from '@components/auxiliary-product-info/AfterpayTeaser';
+import QuadpayTeaser from '@components/auxiliary-product-info/QuadpayTeaser';
 import ShareModal from '@components/share-modal/ShareModal';
 import { getBaseUrl } from '@common/services/fameApi';
 import { generateProductDetailUrl } from '@common/utils/url-helper';
@@ -16,6 +17,7 @@ import { Link } from 'react-router-dom';
 import { SiteVersionContext } from '@common/context/SiteVersionContext';
 import { Desktop, Mobile } from '@components/base/MediaQuerySSR';
 import { DEFAULT_GLOBAL_OPTIONS_NAME } from '@common/constants';
+import { SiteVersion } from '@common/rematch/models';
 
 const ShareArrowIcon = require('@svg/i-share-arrow.svg').default;
 const SwatchesIcon = require('@svg/i-swatches.svg').default;
@@ -253,6 +255,12 @@ class ProductInfo extends React.PureComponent<Props, State> {
         {product.paymentMethods.afterPay && (
           <p className="auxilary-info">
             <AfterpayTeaser total={total} />
+          </p>
+        )}
+
+        {(product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
+          <p className="auxilary-info">
+            <QuadpayTeaser total={total} />
           </p>
         )}
 
