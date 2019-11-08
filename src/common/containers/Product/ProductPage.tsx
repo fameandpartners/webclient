@@ -32,6 +32,7 @@ import { RenderPositionId } from '@common/utils/render-position-id';
 import { CmsPageGlobalConfig } from '@components/cms/CmsPageGlobalConfig';
 import { CmsElementState } from '@common/rematch/models/cms';
 import { transformToReactComponents } from '@containers/CmsPage/CmsPage';
+import { User } from '@typings';
 const FameLogo = require('@svg/i-fame-logo.svg').default;
 
 interface Props extends RouteComponentProps<{}> {
@@ -54,6 +55,8 @@ interface Props extends RouteComponentProps<{}> {
   loadSimilarSilhouettes: (silhouette: string) => void;
 
   pageConfig?: CmsElementState<CmsPageGlobalConfig>;
+
+  user: User | null;
 }
 
 interface State {
@@ -499,16 +502,17 @@ class ProductPage extends React.PureComponent<Props, State> {
 
                             return (
                                 <ProductInfo
-                                    currentCustomizedProduct={currentCustomizedProduct}
-                                    productListSummaries={this.props.productListSummaries}
-                                    goToCustomizationStep={(g, sg, cp, trackingLabel) => {
-                                        trackStartCustomize(g, sg, cp, trackingLabel);
-                                        goToCustomizationStep(g, sg, cp, trackingLabel);
-                                    }}
-                                    addToCart={addToCart}
-                                    isAddingToCart={isAddingToCart}
-                                    isErrorAddingToCart={isErrorAddingToCart}
-                                    onStartChat={this.onStartChat}
+                                  currentCustomizedProduct={currentCustomizedProduct}
+                                  productListSummaries={this.props.productListSummaries}
+                                  goToCustomizationStep={(g, sg, cp, trackingLabel) => {
+                                    trackStartCustomize(g, sg, cp, trackingLabel);
+                                    goToCustomizationStep(g, sg, cp, trackingLabel);
+                                  }}
+                                  addToCart={addToCart}
+                                  isAddingToCart={isAddingToCart}
+                                  isErrorAddingToCart={isErrorAddingToCart}
+                                  onStartChat={this.onStartChat}
+                                  user={this.props.user}
                                 />
                             );
                         }}
