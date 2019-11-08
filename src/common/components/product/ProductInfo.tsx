@@ -18,6 +18,7 @@ import { SiteVersionContext } from '@common/context/SiteVersionContext';
 import { Desktop, Mobile } from '@components/base/MediaQuerySSR';
 import { DEFAULT_GLOBAL_OPTIONS_NAME } from '@common/constants';
 import { SiteVersion } from '@common/rematch/models';
+import { User } from '@typings';
 
 const ShareArrowIcon = require('@svg/i-share-arrow.svg').default;
 const SwatchesIcon = require('@svg/i-swatches.svg').default;
@@ -33,6 +34,8 @@ interface Props {
   addToCart: (cp: CustomizedProduct) => void;
   isAddingToCart: boolean;
   isErrorAddingToCart: boolean;
+
+  user: User | null;
 }
 
 interface State {
@@ -53,7 +56,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
   }
 
   public render() {
-    const { currentCustomizedProduct, goToCustomizationStep, addToCart, isAddingToCart, isErrorAddingToCart } = this.props;
+    const { currentCustomizedProduct, goToCustomizationStep, addToCart, isAddingToCart, isErrorAddingToCart, user } = this.props;
     const { product, components } = currentCustomizedProduct;
 
     const { isAvailable } = product;
@@ -81,6 +84,8 @@ class ProductInfo extends React.PureComponent<Props, State> {
     const mainImage = findImage(currentCustomizedProduct);
 
     const dressTitle = this.getDressTitle();
+
+    const isAdmin = user && user.isAdmin;
 
     return (
       <div className={'ProductInfo'}>
@@ -258,7 +263,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
           </p>
         )}
 
-        {(product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
+        {isAdmin && (product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
           <p className="auxilary-info">
             <QuadpayTeaser total={total} />
           </p>

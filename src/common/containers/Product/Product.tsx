@@ -232,6 +232,7 @@ class Product extends React.Component<Props, State> {
                 loadProductSummaries={this.props.loadProductSummaries}
                 loadSimilarSilhouettes={this.props.loadSimilarSilhouettes}
                 pageConfig={this.props.pageConfig}
+                user={this.props.user}
               />
             )}
           />
