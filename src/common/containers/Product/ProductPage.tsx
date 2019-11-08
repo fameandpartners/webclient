@@ -502,17 +502,17 @@ class ProductPage extends React.PureComponent<Props, State> {
 
                             return (
                                 <ProductInfo
-                                currentCustomizedProduct={currentCustomizedProduct}
-                                productListSummaries={this.props.productListSummaries}
-                                goToCustomizationStep={(g, sg, cp, trackingLabel) => {
-                                  trackStartCustomize(g, sg, cp, trackingLabel);
-                                  goToCustomizationStep(g, sg, cp, trackingLabel);
-                                }}
-                                addToCart={addToCart}
-                                isAddingToCart={isAddingToCart}
-                                isErrorAddingToCart={isErrorAddingToCart}
-                                onStartChat={this.onStartChat}
-                                user={this.props.user}
+                                  currentCustomizedProduct={currentCustomizedProduct}
+                                  productListSummaries={this.props.productListSummaries}
+                                  goToCustomizationStep={(g, sg, cp, trackingLabel) => {
+                                    trackStartCustomize(g, sg, cp, trackingLabel);
+                                    goToCustomizationStep(g, sg, cp, trackingLabel);
+                                  }}
+                                  addToCart={addToCart}
+                                  isAddingToCart={isAddingToCart}
+                                  isErrorAddingToCart={isErrorAddingToCart}
+                                  onStartChat={this.onStartChat}
+                                  user={this.props.user}
                                 />
                             );
                         }}
