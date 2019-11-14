@@ -304,6 +304,16 @@ server
                     ${'runtime~vendor' in assets ? (process.env.NODE_ENV === 'production' ? `<script src="${assets['runtime~vendor'].js}" defer></script>` : `<script src="${assets['runtime~vendor'].js}" defer crossorigin></script>`) : ''}
                     ${'runtime~client' in assets ? (process.env.NODE_ENV === 'production' ? `<script src="${assets['runtime~client'].js}" defer></script>` : `<script src="${assets['runtime~client'].js}" defer crossorigin></script>`) : ''}
                     <script type="application/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${process.env.KLAVIYO_KEY}"></script>
+                    ${
+                      global.__FAME_CONFIG__.GTM_CONTAINER
+                        ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','${global.__FAME_CONFIG__.GTM_CONTAINER}');
+                            </script>`
+                        : ''
+                    }
                 </head>
                 <body ${helmet.bodyAttributes.toString()}>
                     ${
@@ -319,16 +329,6 @@ server
                         window.__FAME_CONFIG__ = ${serialize(global.__FAME_CONFIG__)};
                         window.__PRELOADED_STATE__ = ${serialize(finalState)};
                     </script>
-                    ${
-                      global.__FAME_CONFIG__.GTM_CONTAINER
-                        ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                                })(window,document,'script','dataLayer','${global.__FAME_CONFIG__.GTM_CONTAINER}');
-                            </script>`
-                        : ''
-                    }
                 </body>
             </html>`;
         res.status(context.statusCode || HttpStatus.OK);
