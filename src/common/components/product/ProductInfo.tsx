@@ -81,7 +81,6 @@ class ProductInfo extends React.PureComponent<Props, State> {
       total = Math.floor(totalStrikeThrough * 0.75);
     }
 
-
     const showAuxInfo = isAvailable && (product.paymentMethods.afterPay || returnText || makingComponent);
 
     const showBuySwatch = isNewProduct(product.productId);
