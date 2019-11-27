@@ -263,7 +263,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
           </p>
         )}
 
-        {product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US' && (
+        {false && (product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
           <p className="auxilary-info">
             <QuadpayTeaser total={total} />
           </p>
