@@ -110,4 +110,8 @@ export function isFabricSectionComponent(sectionedComponents: SectionComponent[]
     return sectionedComponents.some((x) => x.section.componentTypeCategory === ComponentType.Fabric);
 }
 
+export function isMakingSection(section: Section) {
+  return section.componentTypeCategory === ComponentType.Making;
+}
+
 // #endregion

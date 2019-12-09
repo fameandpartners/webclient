@@ -1,4 +1,4 @@
-import { isSizeSection, isFabricSection, isColorAndFabricSection, isColorOrFabricSection } from '@common/utils/product-validation';
+import { isSizeSection, isFabricSection, isColorAndFabricSection, isColorOrFabricSection, isMakingSection } from '@common/utils/product-validation';
 import OptionSection from '@components/customization/OptionSection';
 import SizeSelectionSection from '@components/customization/SizeSelectionSection';
 import React from 'react';
@@ -45,6 +45,8 @@ class SectionGroup extends React.PureComponent<Props> {
               return <ColorOrFabricSection initalCustomizedProduct={initialCustomizedProduct} {...commonProps} />;
             } else if (isColorAndFabricSection(s)) {
               return <ColorAndFabricSection initalCustomizedProduct={initialCustomizedProduct} {...commonProps} />;
+            } else if (isMakingSection(s)) {
+              return <OptionSection selectedComponents={selectedComponents} {...commonProps} customizedProduct={initialCustomizedProduct} />;
             } else {
               return <OptionSection selectedComponents={selectedComponents} {...commonProps} customizedProduct={initialCustomizedProduct} />;
             }

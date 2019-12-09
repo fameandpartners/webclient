@@ -83,7 +83,21 @@ const product: any = {
                     ]
                 }
             ]
-        }
+        },
+        {
+          title: 'Shipping',
+          sectionGroups: [
+              {
+                  title: '',
+                  sections: [
+                      {
+                          title: '',
+                          options: [{ code: size10.code }]
+                      }
+                  ]
+              }
+          ]
+      },
     ]
 };
 
@@ -104,11 +118,20 @@ storiesOf('Components/CustomizationOverview', module)
         </Provider>
     ))
     .add('no customizations', () => (
+      <CustomizationOverview
+          canCustomize={true}
+          includeSeparators={true}
+          customizedProduct={{ product, height: null, heightUnit: HeightUnitType.CM, sizeUnit: SizeUnitType.AU, components: [red] }}
+          startCustomize={startCustomize}
+      />
+    ))
+    .add('no customizations with Apple Pay', () => (
         <CustomizationOverview
             canCustomize={true}
             includeSeparators={true}
             customizedProduct={{ product, height: null, heightUnit: HeightUnitType.CM, sizeUnit: SizeUnitType.AU, components: [red] }}
             startCustomize={startCustomize}
+            applePaySupport={true}
         />
     ))
     .add('normal customizations', () => (

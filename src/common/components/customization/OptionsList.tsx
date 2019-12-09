@@ -9,6 +9,7 @@ import { Desktop } from '@components/base/MediaQuerySSR';
 import classnames from 'classnames';
 import { PreviewType } from '@common/utils/preview-type';
 import { RenderPositionId } from '@common/utils/render-position-id';
+import RadioSelection from '@components/customization/RadioSelection';
 
 interface Props {
     title: React.ReactNode;
@@ -39,7 +40,8 @@ class OptionsList extends React.PureComponent<Props> {
         const { title, sectionGroup, componentsList, section, onSelected, customizedProduct, selectedComponents } = this.props;
 
         // This allow us to determine if it is a dress from spree (which uses cads) or is part of the resorts collection (which also uses cads but in the new style).
-        const isCadStyle = sectionGroup.renderPositionId === RenderPositionId.CadNone || componentsList.some((x) => x.componentTypeCategory === ComponentType.LegacyCustomization);
+        const isCadStyle = sectionGroup.renderPositionId === RenderPositionId.CadNone || componentsList.some((x) => x.componentTypeCategory === ComponentType.LegacyCustomization)
+        const isRadioStyle = componentsList.some((x) => x.componentTypeCategory === ComponentType.Making);
 
         return (
             <div className="OptionsList">
@@ -82,6 +84,15 @@ class OptionsList extends React.PureComponent<Props> {
                                 componentsList.notNullOrUndefined().map((c) => (
                                     <UserContext.Consumer key={c.code}>
                                         {(user) => (
+                                          isRadioStyle ?
+                                            <RadioSelection
+                                              component={c}
+                                              isSelected={this.isSelected(c)}
+                                              onSelected={() => onSelected([{ section, components: [c]}])}
+                                              tickColor={TickColor.Dark}
+                                              customizedProduct={customizedProduct}
+                                            />
+                                            :
                                             <OptionSelection
                                                 component={c}
                                                 isSelected={this.isSelected(c)}

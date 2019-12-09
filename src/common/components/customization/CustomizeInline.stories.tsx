@@ -91,6 +91,36 @@ const fpgProductJSON = {
         }
     ],
     components: [
+            {
+                cartId: 'M3D',
+                code: 'M3D',
+                title: 'VIP Delivery',
+                description: '3 - 5 days',
+                componentTypeId: 'making',
+                display_price: '$15.00',
+                componentTypeCategory: 'Making',
+                sortOrder: 900
+            },
+            {
+              cartId: 'M2W',
+              code: 'M2W',
+              title: 'Standard Delivery',
+              description: '2 - 3 weeks',
+              componentTypeId: 'making',
+              display_price: '$0.00',
+              componentTypeCategory: 'Making',
+              sortOrder: 910
+          },
+          {
+            cartId: 'M5W',
+            code: 'M5W',
+            title: 'Not In A Rush',
+            description: '5 - 6 weeks',
+            componentTypeId: 'making',
+            display_price: '10% OFF',
+            componentTypeCategory: 'Making',
+            sortOrder: 950
+        },
         {
             cartId: 'C6',
             code: 'C6',
@@ -2716,7 +2746,41 @@ const fpgProductJSON = {
                 }
             ],
             selectionTitle: 'Tell us your height and size'
-        }
+        },
+        {
+          id: 1050,
+          title: 'Making',
+          slug: 'making',
+          sectionGroups: [
+              {
+                  title: 'Making',
+                  slug: 'making',
+                  sections: [
+                      {
+                          componentTypeId: 'making',
+                          componentTypeCategory: 'Making',
+                          title: 'Select your deliver time',
+                          selectionType: 'RequiredOne',
+                          options: [
+                              {
+                                  code: 'M3D',
+                                  isDefault: false
+                              },
+                              {
+                                  code: 'M2W',
+                                  isDefault: true
+                              },
+                              {
+                                  code: 'M5W',
+                                  isDefault: false
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ],
+          selectionTitle: 'Deliver time'
+      }
     ],
     curationMeta: {
         name: 'Fitted with Waistband',
@@ -5338,7 +5402,7 @@ storiesOf('Components/Customization/CustomizeInline', module)
                 }
             `}</style>
             <Provider store={store}><UserProvider>{stories()}</UserProvider></Provider>
-            
+
         </div>
     ))
     .add('FPG1001 - Fabric or Color Section', () => (
@@ -5366,6 +5430,19 @@ storiesOf('Components/Customization/CustomizeInline', module)
             addToCart={() => null}
             onCustomizationChange={() => null}
         />
+    ))
+    .add('FPG1001 - Shipping Section', () => (
+      <CustomizeInline
+          customizeBeforeAddingToCart={false}
+          initialCustomizedProduct={fpgCustomizedProduct as CustomizedProduct}
+          uncomittedCustomizedProduct={fpgCustomizedProduct as CustomizedProduct}
+          currentGroup={fpgCustomizedProduct.product!.groups![4]}
+          currentSectionGroup={fpgCustomizedProduct.product!.groups![4].sectionGroups![0]}
+          goToProductPage={() => null}
+          goToCustomizationStep={() => null}
+          addToCart={() => null}
+          onCustomizationChange={() => null}
+      />
     ))
     .add('1677 - Color and Fabric Section', () => (
         <CustomizeInline

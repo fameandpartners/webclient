@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 
 import Button from './Button';
 
+const ApplePayIcon = require('@svg/i-apple-pay.svg').default;
+
 const buttons = {
   'Button (primary)': <Button>Hey I am a button</Button>,
   'Button (secondary)': <Button secondary={true}>Hey I am a button</Button>,
@@ -25,6 +27,7 @@ const buttons = {
   'Button (noBorder)': <Button noBorder={true}>Hey I am a button</Button>,
   'Button (error)': <Button error={true}>Hey I am a button</Button>,
   'Button (error) with text': <Button error={true} errorText={'Hey I am an error text'}>Hey I am a button</Button>,
+  'Button (Apple Pay)': <Button normalCase secondary fullwidth>Pay with<ApplePayIcon alt="Apple Pay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 45, height: 16 }}/></Button>,
 };
 
 storiesOf('Base', module).add('Button', () => (

@@ -49,4 +49,5 @@ const store = configureStore(undefined);
 storiesOf('Layout/Cart', module)
     .addDecorator((story) => <Provider store={store}>{story()}</Provider>)
     .add('with items', () => <Cart cart={cartData as any as Order} siteVersion={SiteVersion.AU} removeFromCartAsync={() => action('remove item')} closeCart={() => action('close cart')} isRemovingList={[]} isErrorRemovingList={[]}/>)
+    .add('with items and Apple Pay', () => <Cart cart={cartData as any as Order} applePaySupport siteVersion={SiteVersion.AU} removeFromCartAsync={() => action('remove item')} closeCart={() => action('close cart')} isRemovingList={[]} isErrorRemovingList={[]}/>)
     .add('empty', () => <CartEmpty closeCartDrawer={() => null}/>);

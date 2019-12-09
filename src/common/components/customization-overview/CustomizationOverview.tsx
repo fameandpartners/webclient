@@ -12,14 +12,16 @@ interface Props {
   canCustomize: boolean;
   condensed?: boolean;
   siteVersion: SiteVersion;
+  applePaySupport: boolean;
 }
 
-const CustomizationOverview: React.SFC<Props> = ({ customizedProduct, startCustomize, includeSeparators, canCustomize, condensed, siteVersion }) => {
+const CustomizationOverview: React.SFC<Props> = ({ customizedProduct, startCustomize, includeSeparators, canCustomize, condensed, siteVersion, applePaySupport }) => {
   const { product } = customizedProduct;
   return (
     <div>
       {(product.groups as Array<Group | OrderGroup>)
         .filter((g) => !('hidden' in g && g.hidden))
+        .filter((g) => (g.title != 'Shipping' || (g.title == 'Shipping' && applePaySupport)))
         .map((group, index) => {
           return <GroupRow key={group.title} group={group} customizedProduct={customizedProduct} startCustomize={canCustomize ? startCustomize : null} includeSeparators={includeSeparators} condensed={condensed} siteVersion={siteVersion} />;
         })}

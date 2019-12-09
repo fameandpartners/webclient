@@ -49,6 +49,8 @@ export interface Component {
     isProductCode: boolean;
     isRecommended?: boolean;
     sortOrder: number;
+    display_price: string;
+    description: string;
 
     meta: {
         hex?: string;

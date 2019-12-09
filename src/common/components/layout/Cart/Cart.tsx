@@ -11,9 +11,11 @@ import LineItem from '@components/layout/Cart/LineItem';
 import { isBrowser } from '@common/utils/server-client-helpers';
 import { OrderCustomizedProduct, Order } from '@typings';
 import { RETURN_INSURANCE_SKUS } from '@common/utils/product';
+import DiscountCode from '@components/layout/Cart/DiscountCode'
 
 const CloseCrossIcon = require('@svg/i-close-cross.svg').default;
 const ShoppingBagIcon = require('@svg/i-shopping-bag.svg').default;
+const ApplePayIcon = require('@svg/i-apple-pay.svg').default;
 
 interface CartProps {
     siteVersion: SiteVersion;
@@ -24,6 +26,7 @@ interface CartProps {
     closeCart: () => void;
     hideHeader: boolean;
     fullwidthCheckoutButton: boolean;
+    applePaySupport: boolean;
 }
 
 class Cart extends Component<CartProps> {
@@ -31,6 +34,7 @@ class Cart extends Component<CartProps> {
     public static defaultProps: Partial<CartProps> = {
         hideHeader: false,
         fullwidthCheckoutButton: true,
+        applePaySupport: false,
     };
 
     private generateLineItems() {
@@ -172,6 +176,10 @@ class Cart extends Component<CartProps> {
                             margin: 0 0 $space-base * 3;
                             font-weight: bold;
 
+                            .Cart__Description {
+                              font-weight: normal;
+                            }
+
                             .Cart__Total__Amount {
                                 float: right;
                             }
@@ -226,6 +234,12 @@ class Cart extends Component<CartProps> {
                                 </div>
                             }
 
+                            {this.props.applePaySupport && <div>
+                            <br />
+                            {<DiscountCode siteVersion={this.props.siteVersion} name="Popup" buttonText="APPLY" />}
+                            <br />
+                            </div>}
+
                             <div className="Cart__Total">
                                 <FormattedMessage id="Cart.Subtotal" defaultMessage="Subtotal" />
                                 <span className="Cart__Total__Amount">
@@ -233,9 +247,27 @@ class Cart extends Component<CartProps> {
                                 </span>
                             </div>
 
+                            {this.props.applePaySupport &&
+                            <div className="Cart__Total">
+                                <FormattedMessage id="Cart.Total" defaultMessage="Total" />
+                                <span className="Cart__Description">  Greeting to welcome the user</span>
+
+                                <span className="Cart__Total__Amount">
+                                    <CurrencyAmount hideSign value={this.props.cart ? this.props.cart.itemsTotal : 0} />
+                                </span>
+                            </div>
+                            }
+
                             <Button fullwidth={this.props.fullwidthCheckoutButton} url={`/checkout${isBrowser() && window.location.search ? window.location.search : ''}`}>
                                 <FormattedMessage id="Cart.Checkout" defaultMessage="CHECKOUT" />
                             </Button>
+
+                            {this.props.applePaySupport && <div>
+                            <br />
+                            <Button normalCase secondary fullwidth>
+                              Pay with<ApplePayIcon alt="Apple Pay" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 45, height: 15 }}/>
+                            </Button>
+                            </div>}
                         </div>
                     </React.Fragment>
                 )}
