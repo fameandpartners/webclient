@@ -14,6 +14,7 @@ interface Props extends RouteComponentProps<{ cartId?: string }> {
     closeCart: () => void;
     removeFromCartAsync: (item: OrderCustomizedProduct) => void;
     restoreAbandonedCartAsync: (cartId: string) => void;
+    applyPromotionCodeAsync: (promotionCode: string) => void;
     isErrorRemovingList: number[];
     isRemovingList: number[];
     isAdding: boolean;
@@ -29,7 +30,7 @@ class CartOverview extends React.PureComponent<Props> {
     }
 
     public render() {
-        const { siteVersion, cart, removeFromCartAsync, isErrorRemovingList, isRemovingList, isAdding, isErrorAdding } = this.props;
+        const { siteVersion, cart, removeFromCartAsync, applyPromotionCodeAsync, isErrorRemovingList, isRemovingList, isAdding, isErrorAdding } = this.props;
 
         if (isAdding) {
             return <FullScreenLoader />;
@@ -90,6 +91,8 @@ class CartOverview extends React.PureComponent<Props> {
                         isRemovingList={isRemovingList}
                         hideHeader
                         fullwidthCheckoutButton={false}
+                        applePaySupport={true}
+                        applyPromotionCodeAsync={applyPromotionCodeAsync}
                     />
                 </div>
             </BaseLayout>

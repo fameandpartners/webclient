@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     closeCart: (dispatch as RootDispatch).CartModel.closeCart,
     removeFromCartAsync: (dispatch as RootDispatch).CartModel.removeFromCartAsync,
     restoreAbandonedCartAsync: (dispatch as RootDispatch).CartModel.restoreAbandonedCartAsync,
+    applyPromotionCodeAsync: (dispatch as RootDispatch).CartModel.applyPromotionCodeAsync,
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartOverview));

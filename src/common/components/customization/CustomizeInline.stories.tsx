@@ -97,7 +97,7 @@ const fpgProductJSON = {
                 title: 'VIP Delivery',
                 description: '3 - 5 days',
                 componentTypeId: 'making',
-                display_price: '$15.00',
+                price: 1500,
                 componentTypeCategory: 'Making',
                 sortOrder: 900
             },
@@ -107,7 +107,7 @@ const fpgProductJSON = {
               title: 'Standard Delivery',
               description: '2 - 3 weeks',
               componentTypeId: 'making',
-              display_price: '$0.00',
+              price: 0,
               componentTypeCategory: 'Making',
               sortOrder: 910
           },
@@ -117,7 +117,7 @@ const fpgProductJSON = {
             title: 'Not In A Rush',
             description: '5 - 6 weeks',
             componentTypeId: 'making',
-            display_price: '10% OFF',
+            price: -100,
             componentTypeCategory: 'Making',
             sortOrder: 950
         },

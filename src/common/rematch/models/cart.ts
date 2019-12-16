@@ -109,6 +109,23 @@ const CartModel = createModel({
 
       this.setLoading(false);
     },
+    async applyPromotionCodeAsync(payload: string, rootState: any) {
+      const promotionCode = payload;
+
+      this.setLoading(true);
+      this.setErrorLoading(false);
+
+      try {
+        const fameApi = new FameAPI(rootState.SiteVersion);
+        const cart = await fameApi.applyPromotionCode(promotionCode);
+        this.update({ order: cart });
+      } catch (e) {
+        logHandledError(e);
+        this.setErrorLoading(true);
+      }
+
+      this.setLoading(false);
+    },
     async removeFromCartAsync(payload: OrderCustomizedProduct, rootState: any) {
       trackRemoveFromCart(payload);
 

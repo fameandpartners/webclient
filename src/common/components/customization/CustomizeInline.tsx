@@ -1,6 +1,6 @@
 import { PreviewType } from '@common/utils/preview-type';
 import { auditSelectionType, getRelevantComponents, getSelectedComponents } from '@common/utils/product';
-import { isSectionGroupValid, isSizeSection, isSizeSectionComponent, isColorOrFabricSection } from '@common/utils/product-validation';
+import { isSectionGroupValid, isSizeSection, isSizeSectionComponent, isColorOrFabricSection, isMakingSection } from '@common/utils/product-validation';
 import Button from '@components/base/Button/Button';
 import SectionGroupRender from '@components/customization/SectionGroup';
 import React from 'react';
@@ -268,7 +268,7 @@ class CustomizeInline extends React.PureComponent<Props, State> {
           </div>
         )}
 
-        {!currentSectionGroup.sections.some((s) => isSizeSection(s)) && !currentSectionGroup.sections.some((s) => isColorOrFabricSection(s)) && (
+        {!currentSectionGroup.sections.some((s) => isSizeSection(s)) && !currentSectionGroup.sections.some((s) => isColorOrFabricSection(s)) && !currentSectionGroup.sections.some((s) => isMakingSection(s)) && (
           <React.Fragment>
             {(currentSectionGroup.renderPositionId === RenderPositionId.CadNone || currentSectionGroup.previewType === PreviewType.Cad) && (
               <React.Fragment>

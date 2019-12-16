@@ -20,8 +20,7 @@ const CustomizationOverview: React.SFC<Props> = ({ customizedProduct, startCusto
   return (
     <div>
       {(product.groups as Array<Group | OrderGroup>)
-        .filter((g) => !('hidden' in g && g.hidden))
-        .filter((g) => (g.title != 'Shipping' || (g.title == 'Shipping' && applePaySupport)))
+        .filter((g) => (!('hidden' in g && g.hidden) || (g.slug == 'making' && applePaySupport)) )
         .map((group, index) => {
           return <GroupRow key={group.title} group={group} customizedProduct={customizedProduct} startCustomize={canCustomize ? startCustomize : null} includeSeparators={includeSeparators} condensed={condensed} siteVersion={siteVersion} />;
         })}

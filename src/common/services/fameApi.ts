@@ -113,6 +113,17 @@ class FameAPI {
     }
   }
 
+  public async applyPromotionCode(promotionCode: string): Promise<Order | null> {
+    try {
+      const url = '/user_cart/promotion';
+      const response = await this.webbyApi.post<SpreeOrder>(url, { promotion_code: promotionCode });
+      return cartResponseToCart(response.data);
+    } catch (error) {
+      console.error(error);
+      throw Error(error);
+    }
+  }
+
   public async getProductSummaries(productIds: string[]) {
     const newProducts = productIds.filter((pid) => FameAPI.useNewApi(pid));
     const oldProducts = productIds.filter((pid) => !FameAPI.useNewApi(pid));

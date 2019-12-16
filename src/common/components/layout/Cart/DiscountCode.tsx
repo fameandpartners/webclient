@@ -21,6 +21,7 @@ interface DiscountCodeProps {
   style: 'black' | 'white' | 'default';
   slim?: boolean;
   siteVersion: SiteVersion;
+  applyPromotionCodeAsync: (promotionCode: string) => void;
 }
 
 class DiscountCode extends Component<DiscountCodeProps, DiscountCodeState> {
@@ -45,6 +46,14 @@ class DiscountCode extends Component<DiscountCodeProps, DiscountCodeState> {
 
   private handleDiscountClick(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (this.state.couponCode) {
+      this.props.applyPromotionCodeAsync(this.state.couponCode)
+    } else {
+      this.setState({
+        codeApplyError: true
+      });
+    }
   }
 
 

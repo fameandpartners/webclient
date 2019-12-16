@@ -6,6 +6,8 @@ import classnames from 'classnames';
 import React from 'react';
 import { Component, CustomizedProduct } from 'typings';
 
+const RadioIcon = require('@svg/i-radio.svg').default;
+
 interface Props {
     customizedProduct: CustomizedProduct;
     component: Component;
@@ -50,18 +52,18 @@ class RadioSelection extends React.PureComponent<Props> {
                           margin-right: 6 * $space-base;
                         }
 
+                        fill: $color-grey79;
                         &.selected {
-                            border: 1px solid $color-black;
+                            fill: $color-black;
                         }
                     }
                 `}</style>
                 <p>
-                  <input type="radio" id={component.code}
-                    name="radio_com" value={component.code}></input>
-                  <label htmlFor={component.code}>{component.title}: {component.description}</label>
+                  <RadioIcon alt="Radio" style={{ marginBottom: 2, verticalAlign: 'bottom', display: 'inline', width: 45, height: 16 }}/>
+                  <label>{component.title}: {component.meta.deliveryTimeDescription}</label>
                 </p>
                 <span>
-                    {component.display_price}
+                    <React.Fragment>{' '}<CurrencyAmount value={component.price} /></React.Fragment>
                 </span>
             </div>
         );

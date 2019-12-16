@@ -65,6 +65,7 @@ class CartContainer extends React.PureComponent<Props> {
                                     closeCart={closeCart}
                                     isErrorRemovingList={isErrorRemovingList}
                                     isRemovingList={isRemovingList}
+                                    applePaySupport={true}
                                 />
                             </div>
                         )}

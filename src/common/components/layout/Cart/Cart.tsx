@@ -23,6 +23,7 @@ interface CartProps {
     isRemovingList: number[];
     isErrorRemovingList: number[];
     removeFromCartAsync: (item: OrderCustomizedProduct) => void;
+    applyPromotionCodeAsync: (promotionCode: string) => void;
     closeCart: () => void;
     hideHeader: boolean;
     fullwidthCheckoutButton: boolean;
@@ -236,7 +237,7 @@ class Cart extends Component<CartProps> {
 
                             {this.props.applePaySupport && <div>
                             <br />
-                            {<DiscountCode siteVersion={this.props.siteVersion} name="Popup" buttonText="APPLY" />}
+                            {<DiscountCode siteVersion={this.props.siteVersion} applyPromotionCodeAsync={this.props.applyPromotionCodeAsync} name="Popup" buttonText="APPLY" />}
                             <br />
                             </div>}
 

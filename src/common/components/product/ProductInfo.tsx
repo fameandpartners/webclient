@@ -228,7 +228,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
 
         {isAvailable && (
           <div className="customization-overview">
-            <CustomizationOverview includeSeparators={true} customizedProduct={currentCustomizedProduct} canCustomize={isAvailable} startCustomize={(group) => goToCustomizationStep(group, null, currentCustomizedProduct, 'Customization Overview')} />
+            <CustomizationOverview includeSeparators={true} customizedProduct={currentCustomizedProduct} canCustomize={isAvailable} applePaySupport={true} startCustomize={(group) => goToCustomizationStep(group, null, currentCustomizedProduct, 'Customization Overview')} />
           </div>
         )}
 
