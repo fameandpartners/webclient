@@ -78,7 +78,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
     let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
     if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
       totalStrikeThrough = total;
-      total = Math.floor(totalStrikeThrough * 0.75);
+      total = Math.floor(totalStrikeThrough * 0.8);
     }
 
     const showAuxInfo = isAvailable && (product.paymentMethods.afterPay || returnText || makingComponent);
