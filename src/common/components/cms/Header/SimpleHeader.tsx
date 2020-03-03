@@ -16,6 +16,7 @@ export interface SimpleHeaderProps extends CmsElement {
   media: CmsAssetVideoOrPhoto[];
   mobileMedia: CmsAssetVideoOrPhoto[];
   mediaUrl: string;
+  mediaUrlTargetBlank: boolean;
 
   video: React.ReactNode | null;
   mobileVideo: React.ReactNode | null;
@@ -30,6 +31,7 @@ export interface SimpleHeaderProps extends CmsElement {
 
   button: string;
   buttonUrl: string;
+  buttonUrlTargetBlank: boolean;
   buttonStyle: 'Primary' | 'Secondary' | 'Transparent (Light)' | 'Transparent (Dark)';
 
   emailCapture: React.ReactNode | null;
@@ -47,6 +49,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
       media,
       mobileMedia,
       mediaUrl,
+      mediaUrlTargetBlank,
       video,
       mobileVideo,
       horizontalTitleAlignment,
@@ -58,6 +61,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
       mobileWidth,
       button,
       buttonUrl,
+      buttonUrlTargetBlank,
       buttonStyle,
       spacingBottom,
       mobileSpacingBottom,
@@ -78,7 +82,16 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
           </h2>
         )}
         {button && (
-          <Button inline url={buttonUrl} transparent={buttonStyle === 'Transparent (Light)'} transparentBlack={buttonStyle === 'Transparent (Dark)'} secondary={buttonStyle === 'Secondary'} className="HeaderSimple__CTA" onClick={() => trackCMSHeaderClick(id, button)}>
+          <Button
+            inline
+            url={buttonUrl}
+            target={buttonUrlTargetBlank === true ? '_blank' : '_self'}
+            transparent={buttonStyle === 'Transparent (Light)'}
+            transparentBlack={buttonStyle === 'Transparent (Dark)'}
+            secondary={buttonStyle === 'Secondary'}
+            className="HeaderSimple__CTA"
+            onClick={() => trackCMSHeaderClick(id, button)}
+          >
             {button}
           </Button>
         )}
@@ -294,7 +307,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
               <Desktop>
                 <div className="HeaderSimple__Media">
                   {mediaUrl ? (
-                    <a className="media-link" href={mediaUrl}>
+                    <a className="media-link" href={mediaUrl} target={mediaUrlTargetBlank === true ? '_blank' : '_self'} rel="noopener noreferrer">
                       {media.map(mapToMedia)}
                     </a>
                   ) : (
@@ -307,7 +320,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
               <Mobile>
                 <div className="HeaderSimple__MobileMedia">
                   {mediaUrl ? (
-                    <a className="media-link" href={mediaUrl}>
+                    <a className="media-link" href={mediaUrl} target={mediaUrlTargetBlank === true ? '_blank' : '_self'} rel="noopener noreferrer">
                       {mobileMedia.map(mapToMedia)}
                     </a>
                   ) : (
@@ -327,7 +340,7 @@ class SimpleHeader extends React.PureComponent<SimpleHeaderProps> {
               </Mobile>
             )}
             {mediaUrl ? (
-              <a className={textOverlayClasses} style={{ textDecoration: 'none' }} href={mediaUrl}>
+              <a className={textOverlayClasses} style={{ textDecoration: 'none' }} href={mediaUrl} target={mediaUrlTargetBlank === true ? '_blank' : '_self'} rel="noopener noreferrer">
                 {innerComponent}
               </a>
             ) : (
