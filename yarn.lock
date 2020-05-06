@@ -2035,7 +2035,7 @@ array-flatten@^2.1.0:
 
 array-ext@^0.1.5:
   version "0.1.5"
-  resolved "https://registry.yarnpkg.com/array-ext/-/array-ext-0.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/array-ext/-/array-ext-0.1.5.tgz#b2397d7e0de713daab0045cf780d10adaa5b0417"
 
 array-includes@^3.0.3:
   version "3.0.3"
