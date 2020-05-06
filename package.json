@@ -81,7 +81,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@hellohuman/array-exts": "0.0.3",
     "@rematch/core": "1.0.0-beta.5",
     "@researchgate/react-intersection-observer": "^1.0.0-beta.0",
     "@types/compression": "^0.0.36",
@@ -92,6 +91,7 @@
     "@types/query-string": "^5.1.0",
     "@types/raven": "^2.5.1",
     "@types/xml": "^1.0.2",
+    "array-ext": "^0.1.5",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-react-intl": "^3.0.0",

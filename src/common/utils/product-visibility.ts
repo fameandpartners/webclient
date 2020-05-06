@@ -1,4 +1,4 @@
-import '@hellohuman/array-exts';
+import 'array-ext';
 import { Section, Component, SectionOption, Group, Product } from 'typings';
 import { getParentFromSelection } from '@common/utils/product-component';
 import { filterIncompatbilities, mapToCode } from '@common/utils/product';

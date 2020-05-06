@@ -3,7 +3,7 @@ import { DeepPartial, LayerCAD, Component } from '@typings';
 import { getRenderableBaseCads, getRenderableLayerCads, getRenderableCads } from '@common/utils/cad-helper';
 import { LayerCadType } from '@common/utils/layer-cad-types';
 
-import '@hellohuman/array-exts';
+import 'array-ext';
 
 describe('Legacy CAD Customisations', () => {
     const layerCads: LayerCAD[] = [

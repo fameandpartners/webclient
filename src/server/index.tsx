@@ -32,7 +32,7 @@ import { HttpStatus } from '@components/base/Http';
 import { getRealHost, getRealProtocol } from './http';
 setUpRaven(Raven);
 
-import '@hellohuman/array-exts';
+import 'array-ext';
 import ServerContentfulService from './services/ServerContentfulService';
 import { inferSiteVersionFromHost } from '@common/rematch/models/site-version';
 import { User } from '@typings';

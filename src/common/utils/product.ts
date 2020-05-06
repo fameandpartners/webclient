@@ -1,4 +1,4 @@
-import '@hellohuman/array-exts';
+import 'array-ext';
 import { Component, Group, Product, CustomizedProduct, SectionGroup, Section, SectionOption, ProductListSummaries, OrderComponent } from 'typings';
 import { ComponentType } from '@common/utils/component-type';
 import { SelectionType } from '@common/utils/selection-type';
