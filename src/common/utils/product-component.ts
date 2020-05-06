@@ -1,4 +1,4 @@
-import 'array-ext';
+import '@hellohuman/array-exts';
 import { Section, Component, Product } from 'typings';
 import { mapToCode } from '@common/utils/product';
 import { mapComponentCodeToComponent } from '@common/transforms/componentCodeToComponent';
