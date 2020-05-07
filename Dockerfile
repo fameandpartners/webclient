@@ -3,6 +3,7 @@ WORKDIR /app
 ENV PUBLIC_DIR=/app/public
 COPY .npmrc package.json yarn.lock ./
 COPY version ./version
+COPY @hellohuman ./@hellohuman
 RUN yarn install
 
 COPY . .
