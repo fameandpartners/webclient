@@ -36,7 +36,7 @@
             "@utils/*": ["utils/*"]
         }
     },
-    "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "webpack.client.config.js", "webpack.server.config.js"],
+    "exclude": ["node_modules", "@hellohuman", "build", "scripts", "acceptance-tests", "webpack", "jest", "webpack.client.config.js", "webpack.server.config.js"],
     "typeRoots": ["./src/typings", "./node_modules"],
     "types": ["typePatches", "node", "webpack-env"]
 }
