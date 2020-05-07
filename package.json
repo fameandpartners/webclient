@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
+    "@hellohuman/array-exts": "file:@hellohuman/array-exts",
     "@rematch/core": "1.0.0-beta.5",
     "@researchgate/react-intersection-observer": "^1.0.0-beta.0",
     "@types/compression": "^0.0.36",
