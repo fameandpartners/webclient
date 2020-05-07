@@ -1106,11 +1106,6 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.1.3.tgz#b700d97385fa91affed60c71dfd51c67e9dad762"
 
-"@hellohuman/array-exts@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@hellohuman/array-exts/-/array-exts-0.0.3.tgz#b2397d7e0de713daab0045cf780d10adaa5b0417"
-  integrity sha512-OsiQ8FkqAFPoABh6b6bq6dLXDDMU9gUjQRBprqyQHuLEGZD1hIpEQrXJqEc6UtLK4DwlLIKs5U60VC2mQww/WQ==
-
 "@newrelic/koa@^1.0.0":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@newrelic/koa/-/koa-1.0.5.tgz#76ca506c956b6f6599d866a7a725b573fde2fe1a"
@@ -2037,6 +2032,10 @@ array-flatten@1.1.1:
 array-flatten@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.1.tgz#426bb9da84090c1838d812c8150af20a8331e296"
+
+array-ext@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/array-ext/-/array-ext-0.1.5.tgz#a61998ddf8f1a63ea3cc0e53c91e043c367f4737"
 
 array-includes@^3.0.3:
   version "3.0.3"

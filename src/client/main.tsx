@@ -4,9 +4,9 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import queryString from 'query-string';
 
-import '@hellohuman/array-exts';
-
 import configureStore from '@common/rematch/index';
+
+import '@hellohuman/array-exts';
 
 import App from '@containers/App/index';
 import LanguageProvider from '@containers/LanguageProvider/index';
