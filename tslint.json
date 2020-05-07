@@ -1,5 +1,10 @@
 {
   "extends": ["tslint:latest", "tslint-react"],
+   "linterOptions": {
+      "exclude": [
+          "@hellohuman"
+      ]
+  },
   "rules": {
     "align": [true, "parameters", "statements"],
     "ban": false,
