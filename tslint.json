@@ -1,6 +1,6 @@
 {
   "extends": ["tslint:latest", "tslint-react"],
-   "linterOptions": {
+  "cliOptions": {
       "exclude": [
           "@hellohuman"
       ]
