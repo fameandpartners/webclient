@@ -74,8 +74,16 @@ class ProductInfo extends React.PureComponent<Props, State> {
       .filter((c) => !isIncompatibleIn(c, DEFAULT_GLOBAL_OPTIONS_NAME, components.map(mapToCode)));
     const makingComponent = makingComponents.find((c) => c.isRecommended || false);
 
-    const total = totalPrice(currentCustomizedProduct);
-    const totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
+    const sale = global.__FAME_CONFIG__.SALE_OFF;
+    let total = totalPrice(currentCustomizedProduct);
+    let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
+
+    if (sale < 100) {
+      if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
+        totalStrikeThrough = total;
+        total = Math.floor(totalStrikeThrough * sale / 100);
+      }
+    }
 
     const showAuxInfo = isAvailable && (product.paymentMethods.afterPay || returnText || makingComponent);
 
