@@ -24,7 +24,7 @@ export function createFameConfig(): FameConfig {
     RELEASE: process.env.CIRCLE_SHA1 || 'unknown',
     ENVIRONMENT: process.env.ENVIRONMENT_NAME || process.env.NODE_ENV || 'unknown',
     KLAVIYO_KEY: process.env.KLAVIYO_KEY || '',
-    SALE_OFF: parseInt(process.env.SALE_OFF || '100'),
+    SALE_OFF: parseInt(process.env.SALE_OFF || '100', 10),
     URLS: {
       [SiteVersion.US]: {
         api: process.env.FAME_API_URL_US || 'https://qa4.fameandpartners.com' || 'http://localhost:3000',
