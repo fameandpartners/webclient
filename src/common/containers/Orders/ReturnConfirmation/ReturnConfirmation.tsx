@@ -171,12 +171,6 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                             </React.Fragment>
                         )}
 
-                        {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
-                            <div className={'show-on-print'}>
-                                <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
-                            </div>
-                        )}
-
                         <h2 className={'packing-slip'}>Packing Slip</h2>
                         <hr />
 
@@ -199,6 +193,12 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                                 customizedProduct={item}
                             />
                         ))}
+
+                        {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
+                            <div className={'show-on-print'}>
+                            <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
+                            </div>
+                        )}
                     </div>
 
                     <div className={'OrdersLayout--right'}>
