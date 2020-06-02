@@ -226,8 +226,6 @@ class SizeSelectionSection extends React.PureComponent<Props, State> {
           <div className="height">
             <p>
               <FormattedMessage id="PDP.SizeSelection.HeightTitle" defaultMessage="HEIGHT" />
-              <br />
-              <FormattedMessage id="PDP.SizeSelection.HeightDescription" defaultMessage="Tell us your height without heels and we'll do the rest" />
             </p>
 
             <InputWrapper
