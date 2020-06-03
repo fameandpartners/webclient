@@ -532,6 +532,9 @@ class ProductPage extends React.PureComponent<Props, State> {
         const fabricDescriptions = components
             .filter((x) => x.meta && x.meta.fabricDescription)
             .map((x) => x.meta.fabricDescription).uniqueMap();
+        let fabricDescriptionString = fabricDescriptions.join('\n')
+        if(fabricDescriptionString.indexOf("different from image") == -1 && fabricDescriptionString.indexOf("Due to") == -1)
+            fabricDescriptionString += "\nDue to dyeing process, product hue may\nlook slightly different from image."
 
         const careDescriptions = components
             .filter((x) => x.meta && x.meta.careDescription)
@@ -641,7 +644,7 @@ class ProductPage extends React.PureComponent<Props, State> {
                             <p className="copy-title"><FormattedMessage id={'Fabric'} defaultMessage={'Fabric'} /></p>
                             <div
                                 className="pre-line"
-                                dangerouslySetInnerHTML={{ __html: fabricDescriptions.join('\n') }}
+                                dangerouslySetInnerHTML={{ __html: fabricDescriptionString }}
                             />
                         </div>
                     )}
