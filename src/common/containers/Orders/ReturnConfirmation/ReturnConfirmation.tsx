@@ -74,12 +74,12 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     @import 'vars';
 
                     .packing-slip {
-                        margin-top: -100mm;
+                        margin-top: 0mm;
                         page-break-before: always;
                     }
 
                     hr {
-                        margin: -100mm;
+                        margin: 0mm;
                     }
 
                     :global(header),
