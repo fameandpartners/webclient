@@ -132,7 +132,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                     @page {
                         size: auto;   /* auto is the initial value */
-                        margin: 0mm;  /* this affects the margin in the printer settings */
+                        margin: -10mm;  /* this affects the margin in the printer settings */
                     }
                 `}</style>
                 <div className={'OrdersLayout--container'}>
