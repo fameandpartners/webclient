@@ -74,12 +74,12 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     @import 'vars';
 
                     .packing-slip {
-                        margin-top: -10mm;
-                        page-break-before: always;
+                        margin-top: space(6);
+                        page-break-before: avoid;
                     }
 
                     hr {
-                        margin: -10mm;
+                        margin: space(4) 0;
                     }
 
                     :global(header),
@@ -101,7 +101,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     }
 
                     :global(.OrdersLayout > h1) {
-                        padding-bottom: 2mm !important;
+                        padding-bottom: 0 !important;
                     }
 
                     :global(.LineItem__ImageContainer) {
@@ -131,7 +131,8 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     }
 
                     @page {
-                        margin: -10mm;  /* this affects the margin in the printer settings */
+                        size: auto;   /* auto is the initial value */
+                        margin: 0mm;  /* this affects the margin in the printer settings */
                     }
                 `}</style>
                 <div className={'OrdersLayout--container'}>
