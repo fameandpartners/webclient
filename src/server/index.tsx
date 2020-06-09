@@ -106,7 +106,7 @@ server
       alert('url:' + req.url);
       alert('base url:' + req.baseUrl);
       alert('route:' + req.route.toString());
-      return res.redirect(301, req.url);
+      //return res.redirect(301, req.url);
     }
     for (const redirect of redirects) {
       if (redirect.regex.test(req.url)) {
