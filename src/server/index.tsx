@@ -103,10 +103,10 @@ server
   .use(Raven.requestHandler())
   .use((req, res, next) => {
     if (req.url.includes('.au')) {
-      console.log('url:' + req.url);
-      console.log('base url:' + req.baseUrl);
-      console.log('route:' + req.route.toString());
-      return res.redirect(301, 'https://www.baidu.com/' + req.route.toString());
+      alert('url:' + req.url);
+      alert('base url:' + req.baseUrl);
+      alert('route:' + req.route.toString());
+      return res.redirect(301, req.url);
     }
     for (const redirect of redirects) {
       if (redirect.regex.test(req.url)) {
