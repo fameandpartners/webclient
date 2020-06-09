@@ -107,8 +107,11 @@ server
         return res.redirect(301, redirect.to);
       }
     }
-    if (req.url.endsWith('.au')) {
-      return res.redirect(301, req.url.substring(0, req.url.length - 3));
+    if (req.url.includes('.au')) {
+      alert('url:' + req.url);
+      alert('base url:' + req.baseUrl);
+      alert('route:' + req.route.toString());
+      return res.redirect(301, 'https://www.baidu.com/' + req.route.toString());
     }
     next();
   })
