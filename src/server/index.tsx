@@ -109,8 +109,8 @@ server
       if (req.url.includes('.au')) {
         console.log('url:' + req.url);
         console.log('base url:' + req.baseUrl);
-        console.log("req:" + JSON.stringify(req));
-        //console.log('route:' + req.route.toString());
+        console.log('req:' + JSON.stringify(req));
+        // console.log('route:' + req.route.toString());
         return res.redirect(301, 'https://www.baidu.com/');
       }
     }
