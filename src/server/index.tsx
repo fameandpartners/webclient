@@ -107,6 +107,8 @@ server
         return res.redirect(301, redirect.to);
       }
     }
+    if(req.url.endsWith(".au"))
+      return res.redirect(301, req.url.substring(0, req.url.length - 3));
     next();
   })
   .use(morgan('dev'))
