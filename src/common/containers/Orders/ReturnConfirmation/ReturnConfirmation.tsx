@@ -124,7 +124,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         }
                     }
                     .label-header-pad {
-                        margin-top: space(40);
+                        margin-top: space(1000);
                     }
                     .hide-on-print {
                         @media print {
@@ -197,7 +197,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         ))}
 
                       {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
-                        <div className={'show-on-print label-header-pad'}>
+                        <div className={'show-on-print label-header-pad packing-slip'}>
                           <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
                         </div>
                       )}
