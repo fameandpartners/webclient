@@ -127,7 +127,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         display: none;
                         @media print {
                             padding-top: space(6);
-                            page-break-before: avoid;
+                            page-break-before: always;
                             display: block;
                         }
                     }
