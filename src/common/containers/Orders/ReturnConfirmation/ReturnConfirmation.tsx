@@ -202,8 +202,8 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                       {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
                         <div className={'label-header-pad'}>
-                          <h2 > </h2>
-                          <h2>  </h2>
+                          <p > </p>
+                          <p>  </p>
                           <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
                         </div>
                       )}
