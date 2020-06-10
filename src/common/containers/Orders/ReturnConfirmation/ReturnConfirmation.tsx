@@ -123,7 +123,9 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                             display: block;
                         }
                     }
-
+                    .label_header_pad {
+                        margin:40px 0px 0px 0px;
+                    }
                     .hide-on-print {
                         @media print {
                             display: none;
@@ -176,7 +178,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                         <p>Order #{order.number}</p>
                         {firstLineItem && firstLineItem.return && (
-                            <div className={'show-on-print'}>
+                            <div className={'show-on-print '}>
 
                                 {firstLineItem.return.requestId ? <p>Return Request #{firstLineItem.return.requestId}</p> : <p>Return #{firstLineItem.return.id}</p>}
                                 <p>Placed on {firstLineItem.return.createdDate.toLocaleDateString()}</p>
@@ -195,7 +197,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         ))}
 
                       {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
-                        <div className={'show-on-print'}>
+                        <div className={'show-on-print label_header_pad'}>
                           <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
                         </div>
                       )}
