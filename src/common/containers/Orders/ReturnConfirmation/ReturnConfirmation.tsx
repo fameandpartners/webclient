@@ -75,6 +75,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                     .packing-slip {
                         margin-top: space(10);
+                        display: block !important;
                     }
 
                     hr {
@@ -127,7 +128,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         @media print {
                             padding-top: space(4);
                             page-break-after: auto;
-                            display: block;
+                             display: block !important;
                         }
                     }
                     .hide-on-print {
