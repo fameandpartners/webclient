@@ -84,7 +84,6 @@ server
       res.redirect(HttpStatus.PermanentRedirect, `https://${realHost}${req.originalUrl}`);
       return;
     }
-
     next();
   })
   // Serve fingerprinted and compressed assets with cache header
@@ -106,6 +105,24 @@ server
       if (redirect.regex.test(req.url)) {
         return res.redirect(301, redirect.to);
       }
+      if (req.url.includes('.au')) {
+        console.log('url:' + req.url);
+        console.log('base url:' + req.baseUrl);
+        console.log('req:' + JSON.stringify(req));
+        // console.log('route:' + req.route.toString());
+        return res.redirect(301, 'https://www.baidu.com/');
+      }
+    }
+    next();
+  })
+  // redirect .com.au to .com
+  .use((req, res, next) => {
+    let realHost = getRealHost(req);  
+    const index = realHost.indexOf('.au');
+    if (index !== -1) {
+      realHost = realHost.slice(0, index);
+      res.redirect(HttpStatus.PermanentRedirect, `https://${realHost}${req.originalUrl}`);
+      return;
     }
     next();
   })
