@@ -75,7 +75,6 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                     .packing-slip {
                         margin-top: space(10);
-                        page-break-before: auto;
                     }
 
                     hr {
