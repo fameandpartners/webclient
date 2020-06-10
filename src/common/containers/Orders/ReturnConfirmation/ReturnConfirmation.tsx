@@ -205,8 +205,6 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                                 customizedProduct={item}
                             />
                         ))}
-
-
                     </div>
 
                     <div className={'OrdersLayout--right'}>
