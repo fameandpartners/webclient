@@ -193,6 +193,12 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                                 customizedProduct={item}
                             />
                         ))}
+
+                      {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
+                        <div className={'show-on-print'}>
+                          <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
+                        </div>
+                      )}
                     </div>
 
                     <div className={'OrdersLayout--right'}>
