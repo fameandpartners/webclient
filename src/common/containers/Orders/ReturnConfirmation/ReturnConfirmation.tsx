@@ -126,9 +126,10 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         display: none;
                         @media print {
                             margin-top: 20px;
+                            display: block ;
                             page-break-after: always;
-                            width:80%;
-                            height:80%;
+                            width: 75%;
+                            height: 75%;
                         }
                     }
                     .hide-on-print {
