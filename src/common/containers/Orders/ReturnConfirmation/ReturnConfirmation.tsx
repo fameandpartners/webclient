@@ -127,7 +127,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         display: none;
                         @media print {
                             padding-top: space(6);
-                            page-break-before: auto;
+                            page-break-after: auto;
                             display: block;
                         }
                     }
@@ -178,6 +178,11 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                             </React.Fragment>
                         )}
 
+                      {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
+                        <div className={'label-header-pad'}>
+                          <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
+                        </div>
+                      )}
                         <h2 className={'packing-slip'}>Packing Slip</h2>
                         <hr />
 
@@ -201,11 +206,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                             />
                         ))}
 
-                      {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
-                        <div className={'label-header-pad'}>
-                          <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
-                        </div>
-                      )}
+
                     </div>
 
                     <div className={'OrdersLayout--right'}>
