@@ -72,7 +72,6 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
             >
                 <style jsx>{`
                     @import 'vars';
-
                     .packing-slip {
                         margin-top: space(6);
                         display: block !important;
@@ -126,10 +125,10 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     .label-header-pad {
                         display: none;
                         @media print {
-                            padding-top: space(4);
-                            page-break-after: avoid;
+                            margin-top: 40px;
                             display: block !important;
-                             width: 90% !important;
+                            text-align: center;
+                            page-break-after: always;
                         }
                     }
                     .hide-on-print {
