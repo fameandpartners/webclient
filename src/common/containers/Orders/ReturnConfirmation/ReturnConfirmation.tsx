@@ -124,8 +124,9 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         }
                     }
                     .label-header-pad {
+                        display: none;
                         @media print {
-                            margin-top: 100mm;
+                            marginTop:20px;
                             display: block;
                         }
                     }
@@ -201,6 +202,8 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
 
                       {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
                         <div className={'label-header-pad'}>
+                          <h2 > </h2>
+                          <h2>  </h2>
                           <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
                         </div>
                       )}
