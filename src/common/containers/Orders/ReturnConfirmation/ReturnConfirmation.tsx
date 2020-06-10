@@ -141,18 +141,19 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                         margin: 0mm;  /* this affects the margin in the printer settings */
                     }
                 `}</style>
+               {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
+                 <div className={'label-header-pad'}>
+                   <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
+                 </div>
+                )}
                 <div className={'OrdersLayout--container'}>
-
                     <div className={'OrdersLayout--left'}>
                         {firstLineItem && firstLineItem.return && (
                             <div className={'hide-on-print'}>
-
                                 {firstLineItem.return.requestId ? <h4>Return Request #{firstLineItem.return.requestId}</h4> : <h4>Return #{firstLineItem.return.id}</h4>}
                                 <h5>Placed on {firstLineItem.return.createdDate.toLocaleDateString()}</h5>
-
                             </div>
                         )}
-
                         {firstLineItem && firstLineItem.return && !firstLineItem.return.labelImageUrl && (
                             <React.Fragment>
                                 <h2>Please mail your package to</h2>
@@ -176,22 +177,13 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                                 )}
                             </React.Fragment>
                         )}
-
-                      {firstLineItem && firstLineItem.return && firstLineItem.return.labelImageUrl && (
-                        <div className={'label-header-pad'}>
-                          <img src={firstLineItem.return.labelImageUrl} alt={'Shipping Label'} />
-                        </div>
-                      )}
                         <h2 className={'packing-slip'}>Packing Slip</h2>
                         <hr />
-
                         <p>Order #{order.number}</p>
                         {firstLineItem && firstLineItem.return && (
                             <div className={'show-on-print '}>
-
                                 {firstLineItem.return.requestId ? <p>Return Request #{firstLineItem.return.requestId}</p> : <p>Return #{firstLineItem.return.id}</p>}
                                 <p>Placed on {firstLineItem.return.createdDate.toLocaleDateString()}</p>
-
                             </div>
                         )}
                         {returningProducts.map((item) => (
@@ -205,7 +197,6 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                             />
                         ))}
                     </div>
-
                     <div className={'OrdersLayout--right'}>
                         <h2>Instructions for mailing your package</h2>
 
