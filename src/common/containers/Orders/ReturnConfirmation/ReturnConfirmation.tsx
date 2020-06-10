@@ -125,8 +125,7 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                     }
                     .label-header-pad {
                         @media print {
-                            margin-top: space(1000);
-                            display: none;
+                            margin-top: space(20);
                         }
                     }
                     .hide-on-print {
