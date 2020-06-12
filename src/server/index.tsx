@@ -331,13 +331,9 @@ server
                             </script>`
                         : ''
                     }
-                    <script type="text/javascript">
-                      window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-                      d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-                      _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
-                      $.src="https://v2.zopim.com/?2SdRnCDHEZAfsODofwYtmdcBHnrI7G2S";z.t=+new Date;$.
-                      type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
-                    </script>
+                    <!-- Start of  Zendesk Widget script -->
+                    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3fba35ce-8ec2-4293-a26d-4d1ef0ed88a8"> </script>
+                    <!-- End of  Zendesk Widget script -->
                 </head>
                 <body ${helmet.bodyAttributes.toString()}>
                     ${
