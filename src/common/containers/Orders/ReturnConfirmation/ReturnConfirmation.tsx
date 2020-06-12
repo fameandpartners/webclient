@@ -174,9 +174,8 @@ class ReturnConfirmation extends React.PureComponent<Props, State> {
                                 {!order.isAustralianOrder && (
                                     <p>
                                         Fame and Partners - Returns <br />
-                                        C/O - Newgistics <br />
-                                        1200 Worldwide Boulevard <br />
-                                        Hebron, KY 41048 <br />
+                                        16012 Arthur St <br />
+                                        Cerritos, CA 90703 <br />
                                     </p>
                                 )}
                             </React.Fragment>
