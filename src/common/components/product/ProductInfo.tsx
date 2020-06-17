@@ -76,26 +76,25 @@ class ProductInfo extends React.PureComponent<Props, State> {
     const makingComponent = makingComponents.find((c) => c.isRecommended || false);
 
     const sale = global.__FAME_CONFIG__.SALE_OFF;
-    const sale_products: string[] = global.__FAME_CONFIG__.SALE_PRODUCTS.split(',');
+    const saleProducts: string[] = global.__FAME_CONFIG__.SALE_PRODUCTS.split(',');
     let total = totalPrice(currentCustomizedProduct);
     let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
-    let if_on_sale = false;
+    let IF_ON_SALE = false;
 
-    if(sale < 100) {
-      if(sale_products.length === 0) {
-        if_on_sale = true;
-      }
-      else {
-        for (let sale_product of sale_products) {
-          if(sale_product === product.productId.toString().toUpperCase()) {
-            if_on_sale = true;
+    if (sale < 100) {
+      if (saleProducts.length === 0) {
+        IF_ON_SALE = true;
+      } else {
+        for (const saleProduct of saleProducts) {
+          if (saleProduct === product.productId.toString().toUpperCase()) {
+            IF_ON_SALE = true;
             break;
           }
         }
       }
     }
 
-    if (if_on_sale) {
+    if (IF_ON_SALE) {
       if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
         totalStrikeThrough = total;
         total = Math.floor(totalStrikeThrough * sale / 100);
