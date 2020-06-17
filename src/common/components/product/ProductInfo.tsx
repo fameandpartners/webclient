@@ -19,6 +19,7 @@ import { Desktop, Mobile } from '@components/base/MediaQuerySSR';
 import { DEFAULT_GLOBAL_OPTIONS_NAME } from '@common/constants';
 import { SiteVersion } from '@common/rematch/models';
 import { User } from '@typings';
+import { print } from 'util';
 
 const ShareArrowIcon = require('@svg/i-share-arrow.svg').default;
 const SwatchesIcon = require('@svg/i-swatches.svg').default;
@@ -75,10 +76,25 @@ class ProductInfo extends React.PureComponent<Props, State> {
     const makingComponent = makingComponents.find((c) => c.isRecommended || false);
 
     const sale = global.__FAME_CONFIG__.SALE_OFF;
+    const saleProducts: string[] = global.__FAME_CONFIG__.SALE_PRODUCTS.split(',');
     let total = totalPrice(currentCustomizedProduct);
     let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
+    let IF_ON_SALE = false;
 
     if (sale < 100) {
+      if (saleProducts.length === 1 && saleProducts[0] === '') {
+        IF_ON_SALE = true;
+      } else {
+        for (const saleProduct of saleProducts) {
+          if (saleProduct === product.productId.toString().toUpperCase()) {
+            IF_ON_SALE = true;
+            break;
+          }
+        }
+      }
+    }
+
+    if (IF_ON_SALE) {
       if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
         totalStrikeThrough = total;
         total = Math.floor(totalStrikeThrough * sale / 100);
