@@ -82,7 +82,7 @@ class ProductInfo extends React.PureComponent<Props, State> {
     let IF_ON_SALE = false;
 
     if (sale < 100) {
-      if (saleProducts.length === 0) {
+      if (saleProducts.length === 1 && saleProducts[0] === '') {
         IF_ON_SALE = true;
       } else {
         for (const saleProduct of saleProducts) {
