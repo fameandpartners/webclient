@@ -188,8 +188,8 @@ class Footer extends PureComponent<FooterProps> {
                     
                     <div className="copyright-spacer" />
 
-
                     <div className="copyright-site-version">
+                        
                         <div className="copyright text-secondary">
                             <span>© {new Date().getFullYear()} Fame and Partners Inc.</span>
                         </div>
