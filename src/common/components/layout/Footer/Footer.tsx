@@ -189,18 +189,7 @@ class Footer extends PureComponent<FooterProps> {
                     <div className="copyright-spacer" />
 
                     <div className="copyright-site-version">
-                        <form className="site-version">
-                            Country: &nbsp;
-                            <Select
-                                options={[{ name: 'United States', value: SiteVersion.US }, { name: 'Australia', value: SiteVersion.AU }]}
-                                noBorder
-                                slim
-                                transparent
-                                selected={this.props.siteVersion}
-                                onChange={(e) => this.props.changeSiteVersion(e.target.value as SiteVersion)}
-                            />
-                        </form>
-
+                        
                         <div className="copyright text-secondary">
                             <span>© {new Date().getFullYear()} Fame and Partners Inc.</span>
                         </div>
