@@ -169,13 +169,10 @@ class Footer extends PureComponent<FooterProps> {
             <div className="newsletter">
               <div id="fd-form-5ece926bd832e40026fdb15e"/>
             </div>
-
             <div className="spacer" />
-
             <div className="social-links">
               <SocialLinks />
             </div>
-
             {this.props.pageConfig.footerNavigation.map((links) => <NavigationLink
               key={links.id}
               items={links}
@@ -183,9 +180,7 @@ class Footer extends PureComponent<FooterProps> {
               showTitle={false}
               horizontal
             />)}
-
             <div className="copyright-spacer" />
-
             <div className="copyright-site-version">
               <form className="site-version">
                 Country: &nbsp;
@@ -198,15 +193,11 @@ class Footer extends PureComponent<FooterProps> {
                   onChange={(e) => this.props.changeSiteVersion(e.target.value as SiteVersion)}
                 />
               </form>
-
               <div className="copyright text-secondary">
                 <span>© {new Date().getFullYear()} Fame and Partners Inc.</span>
               </div>
             </div>
           </div>
-
-
-
         </footer>
       );
     }
