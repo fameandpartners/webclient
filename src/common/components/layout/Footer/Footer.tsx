@@ -19,12 +19,7 @@ class Footer extends PureComponent<FooterProps> {
       return (
         <footer>
           <div id="fd-form-5ece926bd832e40026fdb15e"/>
-          {
-            window.fd('form', {
-              formId: '5ece926bd832e40026fdb15e',
-              containerEl: '#fd-form-5ece926bd832e40026fdb15e'
-            })
-          }
+
         </footer>
       );
     }
