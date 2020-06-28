@@ -90,7 +90,7 @@ class Footer extends PureComponent<FooterProps> {
                                 @include grid-column(5);
                                 padding-left:0;
                                 padding-right:0;
-
+                                background-color: $color-footer-background;
                                 @include media("<tabletLarge") {
                                     order: -1;
                                     @include grid-column(12);
