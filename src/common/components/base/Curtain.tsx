@@ -46,8 +46,7 @@ class Curtain extends React.PureComponent<Props> {
     }
 
     public render() {
-
-      if (!this.el || !this.portalRoot) {
+        if (!this.el || !this.portalRoot) {
             return null;
         }
 
