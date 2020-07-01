@@ -51,8 +51,7 @@ class Curtain extends React.PureComponent<Props> {
         }
 
         return createPortal(
-            <React.Fragment>
-            </React.Fragment>,
+            <React.Fragment/>,
             this.el,
         );
     }
