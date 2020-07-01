@@ -335,17 +335,7 @@ class EmailCapturePopup extends React.PureComponent<Props, State> {
   }
 
   public render() {
-    if (!this.state.setup) {
-      this.init();
-    }
-
-    return (
-      <Curtain centerChildren isVisible={this.state.isVisible} onClick={() => this.onClose()}>
-        <FadeInOutTransition isVisible={this.state.isVisibleModal} fromValue={0.8} onAnimationFinished={() => this.setState({ animated: !this.state.isVisibleModal })}>
-          {(fadeStyle) => this.renderContent(fadeStyle)}
-        </FadeInOutTransition>
-      </Curtain>
-    );
+     return null;
   }
 }
 
