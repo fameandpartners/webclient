@@ -16,9 +16,9 @@ interface FooterProps {
 
 class Footer extends PureComponent<FooterProps> {
     public render() {
-        return (
-            <footer>
-                <style jsx>{`
+      return (
+        <footer>
+          <style jsx>{`
                         @import "vars";
 
 
@@ -56,7 +56,7 @@ class Footer extends PureComponent<FooterProps> {
                             }
                         }
 
-                        .inner { 
+                        .inner {
                             @include grid;
                             margin: 0 auto;
                             padding:0 $page-padding;
@@ -82,7 +82,7 @@ class Footer extends PureComponent<FooterProps> {
                                             margin: 0;
                                         }
                                     }
-                                    
+
                                 }
                             }
 
@@ -90,7 +90,6 @@ class Footer extends PureComponent<FooterProps> {
                                 @include grid-column(5);
                                 padding-left:0;
                                 padding-right:0;
-
                                 @include media("<tabletLarge") {
                                     order: -1;
                                     @include grid-column(12);
@@ -164,39 +163,31 @@ class Footer extends PureComponent<FooterProps> {
                             }
                         }
                     `}
-                </style>
-                <div className="inner">
-                    <div className="newsletter">
-                        <InputWrapper label={<FormattedMessage id={'Footer.Newsletter.Callout'} defaultMessage={'Try custom for the first time with $20 off'} />}>
-                            <EmailCapture buttonText="JOIN NOW" name="Footer" style="black" slim />
-                        </InputWrapper>
-                    </div>
-
-                    <div className="spacer" />
-                    
-                    <div className="social-links">
-                        <SocialLinks />
-                    </div>
-
-                    {this.props.pageConfig.footerNavigation.map((links) => <NavigationLink
-                        key={links.id}
-                        items={links}
-                        showAd={false}
-                        showTitle={false}
-                        horizontal
-                    />)}
-                    
-                    <div className="copyright-spacer" />
-
-                    <div className="copyright-site-version">
-                        
-                        <div className="copyright text-secondary">
-                            <span>© {new Date().getFullYear()} Fame and Partners Inc.</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        );
+          </style>
+          <div className="inner">
+            <div className="newsletter">
+              <div id="fd-form-5ece926bd832e40026fdb15e"/>
+            </div>
+            <div className="spacer" />
+            <div className="social-links">
+              <SocialLinks />
+            </div>
+            {this.props.pageConfig.footerNavigation.map((links) => <NavigationLink
+              key={links.id}
+              items={links}
+              showAd={false}
+              showTitle={false}
+              horizontal
+            />)}
+            <div className="copyright-spacer" />
+            <div className="copyright-site-version">
+              <div className="copyright text-secondary">
+                <span>© {new Date().getFullYear()} Fame and Partners Inc.</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      );
     }
 }
 

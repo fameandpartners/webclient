@@ -54,11 +54,11 @@ class Curtain extends React.PureComponent<Props> {
             <React.Fragment>
                 <FadeInOutTransition isVisible={this.props.isVisible}>
                     { (styles) => (
-                        <div 
+                        <div
                             ref={this._root}
                             className={classnames('curtain', { 'center-children': this.props.centerChildren })}
                             style={{
-                                opacity: styles.opacity, 
+                                opacity: styles.opacity,
                                 ...this.props.style
                             }}
                         >
@@ -80,7 +80,7 @@ class Curtain extends React.PureComponent<Props> {
                                     }
                                 }
                             `}</style>
-                            
+
                             <BodyLock isVisible={this.props.isVisible} isHeader={this.props.padNavbar} onEscape={this.props.onClick}>
                                 {this.props.children}
                             </BodyLock>
