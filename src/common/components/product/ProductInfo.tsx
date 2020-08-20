@@ -77,13 +77,23 @@ class ProductInfo extends React.PureComponent<Props, State> {
 
     const sale = global.__FAME_CONFIG__.SALE_OFF;
     const saleProducts: string[] = global.__FAME_CONFIG__.SALE_PRODUCTS.split(',');
+    const notsaleProducts: string[] = global.__FAME_CONFIG__.NOT_SALE_PRODUCTS.split(',');
     let total = totalPrice(currentCustomizedProduct);
     let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
     let IF_ON_SALE = false;
+    console.log(notsaleProducts);
 
     if (sale < 100) {
       if (saleProducts.length === 1 && saleProducts[0] === '') {
         IF_ON_SALE = true;
+        if (notsaleProducts.length > 0 && notsaleProducts[0] !== '') {
+          for (const notsaleProduct of notsaleProducts) {
+            if (notsaleProduct === product.productId.toString().toUpperCase()) {
+              IF_ON_SALE = false;
+              break;
+            }
+          }
+        }
       } else {
         for (const saleProduct of saleProducts) {
           if (saleProduct === product.productId.toString().toUpperCase()) {
@@ -91,13 +101,6 @@ class ProductInfo extends React.PureComponent<Props, State> {
             break;
           }
         }
-      }
-    }
-
-    if (IF_ON_SALE) {
-      if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
-        totalStrikeThrough = total;
-        total = Math.floor(totalStrikeThrough * sale / 100);
       }
     }
 
