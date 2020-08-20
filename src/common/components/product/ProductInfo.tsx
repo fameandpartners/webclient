@@ -104,6 +104,13 @@ class ProductInfo extends React.PureComponent<Props, State> {
       }
     }
 
+    if (IF_ON_SALE) {
+      if (currentCustomizedProduct.product.strikeThroughPrice === undefined) {
+        totalStrikeThrough = total;
+        total = Math.floor(totalStrikeThrough * sale / 100);
+      }
+    }
+
     const showAuxInfo = isAvailable && (product.paymentMethods.afterPay || returnText || makingComponent);
 
     const showBuySwatch = isNewProduct(product.productId);
