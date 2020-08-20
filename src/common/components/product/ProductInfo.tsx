@@ -77,13 +77,23 @@ class ProductInfo extends React.PureComponent<Props, State> {
 
     const sale = global.__FAME_CONFIG__.SALE_OFF;
     const saleProducts: string[] = global.__FAME_CONFIG__.SALE_PRODUCTS.split(',');
+    const notsaleProducts: string[] = global.__FAME_CONFIG__.NOT_SALE_PRODUCTS.split(',');
     let total = totalPrice(currentCustomizedProduct);
     let totalStrikeThrough = totalStrikeThroughPrice(currentCustomizedProduct);
     let IF_ON_SALE = false;
+    console.log(notsaleProducts);
 
     if (sale < 100) {
       if (saleProducts.length === 1 && saleProducts[0] === '') {
         IF_ON_SALE = true;
+        if (notsaleProducts.length > 0 && notsaleProducts[0] !== '') {
+          for (const notsaleProduct of notsaleProducts) {
+            if (notsaleProduct === product.productId.toString().toUpperCase()) {
+              IF_ON_SALE = false;
+              break;
+            }
+          }
+        }
       } else {
         for (const saleProduct of saleProducts) {
           if (saleProduct === product.productId.toString().toUpperCase()) {
@@ -112,8 +122,8 @@ class ProductInfo extends React.PureComponent<Props, State> {
     const isAdmin = user && user.isAdmin;
 
     return (
-      <div className={'ProductInfo'}>
-        <style jsx>{`
+      <div className={ 'ProductInfo' }>
+        <style jsx>{ `
           @import 'vars';
 
           .ProductInfo {
@@ -239,84 +249,84 @@ class ProductInfo extends React.PureComponent<Props, State> {
           }
         `}</style>
 
-        {isAvailable && (
+        { isAvailable && (
           <Desktop>
             <div className="DressTitleWrapper">
-              <h1 className="DressTitleWrapper__Title">{dressTitle}</h1>
+              <h1 className="DressTitleWrapper__Title">{ dressTitle }</h1>
               <em className="DressTitleWrapper__Price">
-                {' '}
-                <CurrencyAmount value={total} hideSign strikeThroughValue={totalStrikeThrough} />
+                { ' ' }
+                <CurrencyAmount value={ total } hideSign strikeThroughValue={ totalStrikeThrough } />
               </em>
             </div>
           </Desktop>
-        )}
+        ) }
 
-        {!isAvailable && (
+        { !isAvailable && (
           <div className="product-unavailable">
-            <ProductUnavailable dressTitle={dressTitle} />
+            <ProductUnavailable dressTitle={ dressTitle } />
           </div>
-        )}
+        ) }
 
-        {isAvailable && (
+        { isAvailable && (
           <div className="customization-overview">
-            <CustomizationOverview includeSeparators={true} customizedProduct={currentCustomizedProduct} canCustomize={isAvailable} startCustomize={(group) => goToCustomizationStep(group, null, currentCustomizedProduct, 'Customization Overview')} />
+            <CustomizationOverview includeSeparators={ true } customizedProduct={ currentCustomizedProduct } canCustomize={ isAvailable } startCustomize={ (group) => goToCustomizationStep(group, null, currentCustomizedProduct, 'Customization Overview') } />
           </div>
-        )}
+        ) }
 
-        {isAvailable && (
+        { isAvailable && (
           <Button
             fullwidth
             className="add-to-cart-button"
-            onClick={() => addToCart(currentCustomizedProduct)}
-            spinner={isAddingToCart}
-            error={isErrorAddingToCart}
-            errorText={<FormattedMessage id="Pdp.AddToCart.Error" defaultMessage="Oh no, there was a problem adding this to your bag. Why don't you try that again?" />}
+            onClick={ () => addToCart(currentCustomizedProduct) }
+            spinner={ isAddingToCart }
+            error={ isErrorAddingToCart }
+            errorText={ <FormattedMessage id="Pdp.AddToCart.Error" defaultMessage="Oh no, there was a problem adding this to your bag. Why don't you try that again?" /> }
           >
             <Desktop>
               <FormattedMessage id="Pdp.AddToCart" defaultMessage="ADD TO BAG" />
             </Desktop>
             <Mobile>
-              <FormattedMessage id="Pdp.AddToCart.WithPrice" defaultMessage="{price} - ADD TO BAG" values={{ price: `$${(total / 100).toFixed(2)}` }} />
+              <FormattedMessage id="Pdp.AddToCart.WithPrice" defaultMessage="{price} - ADD TO BAG" values={ { price: `$${(total / 100).toFixed(2)}` } } />
             </Mobile>
           </Button>
-        )}
+        ) }
 
-        {product.paymentMethods.afterPay && (
+        { product.paymentMethods.afterPay && (
           <p className="auxilary-info">
-            <AfterpayTeaser total={total} />
+            <AfterpayTeaser total={ total } />
           </p>
-        )}
+        ) }
 
-        {(product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
+        { (product.siteVersionInfo.localisationCode === 'us' || product.siteVersionInfo.localisationCode === 'en-US') && (
           <p className="auxilary-info">
-            <QuadpayTeaser total={total} />
+            <QuadpayTeaser total={ total } />
           </p>
-        )}
+        ) }
 
-        {returnText && <p className="auxilary-info">{returnText && <span dangerouslySetInnerHTML={{ __html: returnText }} />}</p>}
+        { returnText && <p className="auxilary-info">{ returnText && <span dangerouslySetInnerHTML={ { __html: returnText } } /> }</p> }
 
-        {isAvailable && (
+        { isAvailable && (
           <div className="share-moodboard">
-            <a className="no-underline icon-text" onClick={() => this.setState({ showShare: true })}>
-              <ShareArrowIcon alt="" style={{ width: 16, height: 16 }} />
-              <FormattedMessage id={'ProductPage.Share.Title'} defaultMessage={'Share this dress'} />
+            <a className="no-underline icon-text" onClick={ () => this.setState({ showShare: true }) }>
+              <ShareArrowIcon alt="" style={ { width: 16, height: 16 } } />
+              <FormattedMessage id={ 'ProductPage.Share.Title' } defaultMessage={ 'Share this dress' } />
             </a>
-            {showBuySwatch && (
+            { showBuySwatch && (
               <Link className="no-underline icon-text" to="/custom-clothes/order-swatches" target="_blank">
-                <SwatchesIcon alt="" style={{ width: 16, height: 16 }} />
-                <FormattedMessage id={'ProductPage.Swatches.Title'} defaultMessage={'Order Swatches'} />
+                <SwatchesIcon alt="" style={ { width: 16, height: 16 } } />
+                <FormattedMessage id={ 'ProductPage.Swatches.Title' } defaultMessage={ 'Order Swatches' } />
               </Link>
-            )}
+            ) }
 
-            <a className="no-underline  icon-text" onClick={this.props.onStartChat}>
-              <ChatIcon alt="" style={{ width: 16, height: 16 }} />
-              <FormattedMessage id={'ProductPage.Chat.Start'} defaultMessage={'Need help? Chat now.'} />
+            <a className="no-underline  icon-text" onClick={ this.props.onStartChat }>
+              <ChatIcon alt="" style={ { width: 16, height: 16 } } />
+              <FormattedMessage id={ 'ProductPage.Chat.Start' } defaultMessage={ 'Need help? Chat now.' } />
             </a>
           </div>
-        )}
+        ) }
 
         <SiteVersionContext.Consumer>
-          {(siteVersion) => <ShareModal isVisible={this.state.showShare} url={`${getBaseUrl(siteVersion).frontend}${generateProductDetailUrl(currentCustomizedProduct, '')}`} onClose={() => this.setState({ showShare: false })} dressTitle={dressTitle} image={mainImage} />}
+          { (siteVersion) => <ShareModal isVisible={ this.state.showShare } url={ `${getBaseUrl(siteVersion).frontend}${generateProductDetailUrl(currentCustomizedProduct, '')}` } onClose={ () => this.setState({ showShare: false }) } dressTitle={ dressTitle } image={ mainImage } /> }
         </SiteVersionContext.Consumer>
       </div>
     );

@@ -27,7 +27,8 @@ export type FameConfig = {
   ENVIRONMENT: string;
   KLAVIYO_KEY: string;
   SALE_OFF: number;
-  SALE_PRODUCTS:string;
+  SALE_PRODUCTS: string;
+  NOT_SALE_PRODUCTS: string;
   FLAGS: {
     MAINTENANCE_MODE?: boolean;
   };
